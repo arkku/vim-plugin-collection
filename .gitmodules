@@ -1,0 +1,72 @@
+[submodule "pack/universal/start/surround"]
+	path = pack/universal/start/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "pack/integration/start/fugitive"]
+	path = pack/integration/start/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/integration/start/obsession"]
+	path = pack/integration/start/obsession
+	url = https://github.com/tpope/vim-obsession.git
+[submodule "pack/integration/start/eunuch"]
+	path = pack/integration/start/eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "pack/lisp/start/sexp"]
+	path = pack/lisp/start/sexp
+	url = https://github.com/guns/vim-sexp.git
+[submodule "pack/lisp/start/sexp-mapping-for-regular-people"]
+	path = pack/lisp/start/sexp-mapping-for-regular-people
+	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
+[submodule "pack/universal/start/repeat"]
+	path = pack/universal/start/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "pack/programming/start/endwise"]
+	path = pack/programming/start/endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "pack/programming/start/commentary"]
+	path = pack/programming/start/commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "pack/ruby/start/bundler"]
+	path = pack/ruby/start/bundler
+	url = https://github.com/tpope/vim-bundler.git
+[submodule "pack/universal/start/characterize"]
+	path = pack/universal/start/characterize
+	url = https://github.com/tpope/vim-characterize.git
+[submodule "pack/ruby/start/rvm"]
+	path = pack/ruby/start/rvm
+	url = https://github.com/tpope/vim-rvm.git
+[submodule "pack/programming/start/apathy"]
+	path = pack/programming/start/apathy
+	url = https://github.com/tpope/vim-apathy.git
+[submodule "pack/integration/start/ctrlp"]
+	path = pack/integration/start/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "pack/integration/start/tbone"]
+	path = pack/integration/start/tbone
+	url = https://github.com/tpope/vim-tbone
+[submodule "pack/programming/start/radical"]
+	path = pack/programming/start/radical
+	url = https://github.com/glts/vim-radical.git
+[submodule "pack/programming/start/magnum"]
+	path = pack/programming/start/magnum
+	url = https://github.com/glts/vim-magnum.git
+[submodule "pack/obscure/start/speeddating"]
+	path = pack/obscure/start/speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "pack/integration/start/nerdtree"]
+	path = pack/integration/start/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule "pack/integration/start/nerdtree-git-plugin"]
+	path = pack/integration/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule "pack/integration/start/gitgutter"]
+	path = pack/integration/start/gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "pack/obscure/start/tabular"]
+	path = pack/obscure/start/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "pack/ui/start/supertab"]
+	path = pack/ui/start/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "pack/ui/start/buffet"]
+	path = pack/ui/start/buffet
+	url = https://github.com/bagrat/vim-buffet
