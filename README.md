@@ -325,7 +325,7 @@ There are separate sections for plugins for a specific programming language.
 mappings for "S-expressions", for use in `Lisp`, `Scheme`, `Clojure`, etc.
 Unfortunately, some of those mappings are rathe un-vimlike, so there is
 a supplementary plugin
-[vim-sexp-mappings-for-regular-people](https://github.com/guns/vim-sexp)
+[vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people/)
 which adds more vim-like mappings.
 
 You may also wish to remove the insert mode mappings by setting the option:
