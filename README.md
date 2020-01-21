@@ -343,11 +343,10 @@ to carry around in `.vimrc`.
 #### General Bindings
 
  * `Esc` to close pop-up menus
- * `p` in visual mode replaces the selection with the "put" (yank paste)
+ * `p` in visual mode replaces the selection without yanking (you can use `P`
+   if you prefer to yank the replaced text)
  * `^_` in insert mode opens a `=` expression prompt, and the results are
    inserted (e.g., `0x20 * 2` inserts `64`)
- * `^S` in insert mode opens a `=system("` expression prompt, and the results
-   are inserted (e.g., `=system("ls")`)
  * `\y` yanks (copies) to the system clipboard (also in insert mode)
  * `\p` puts (pastes) from the system clipboard (also in insert mode)
  * `:vb` is an abbreviation for `:vert sb`

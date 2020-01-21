@@ -13,7 +13,7 @@ let g:surround_68 = "do\n\t\r\nend"         " cs{D to change {} into do/end
 if has("autocmd")
     " VSB to wrap selection in a block ({}, begin/end) for the current language:
     au FileType ruby,eruby let surround_66 = "begin\n\t\r\nend"
-    au FileType c,java,objc,cpp,javascript,go,cs,sh,bash let surround_66 = "{\n\t\r\n}"
+    au FileType c,java,objc,cpp,javascript,go,cs,sh,bash,zsh let surround_66 = "{\n\t\r\n}"
     au FileType swift let surround_66 = "do {\n\t\r\n}"
     au FileType lua let surround_66 = "do\n\t\r\nend"
     au FileType html let surround_66 = "<div>\n\t\r\n</div>"
@@ -33,13 +33,14 @@ if has("autocmd")
 
     " VSF to wrap selection in the equivalent of 'if false then ... endif':
     au FileType c,objc,cpp let surround_70 = "#if 0\n\r\n#endif"
+    au FileType vim let surround_70 = "if 0\n\r\nendif"
     au FileType swift let surround_70 = "#if false\n\r\n#endif"
     au FileType ruby,eruby let surround_70 = "=begin\n\t\r\n=end"
     au FileType java,javascript,go,cs let surround_70 = "if (false) {\n\t\r\n}"
     au FileType python let surround_70 = "if False:\n\t\r\n"
     au FileType eiffel let surround_70 = "if False then\n\t\r\nend"
     au FileType lua let surround_70 = "if false then\n\t\r\nend"
-    au FileType sh,bash let surround_70 = "if false; then\n\t\r\nfi"
+    au FileType sh,bash,zsh let surround_70 = "if false; then\n\t\r\nfi"
 
     " Prefer new-style comments in C-like languages
     au FileType c,objc,cpp,swift setlocal commentstring=//%s
@@ -54,15 +55,14 @@ if empty(mapcheck('<C-N>', 'n'))
 endif
 
 " Shortcut for the handy ^R=
-if empty(mapcheck('<C-S>', 'i'))
-    inoremap <C-S> <C-R>=system("
-endif
 if empty(mapcheck('<C-_>', 'i'))
     inoremap <C-_> <C-R>=
 endif
+"if empty(mapcheck('<C-S>', 'i'))
+"endif
 
-" Make p in Visual mode replace the selected text with the "" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+" Make p in visual mode paste over the selection without yanking it
+vnoremap p "_dP
 
 " \y and \p to copy/paste system clipboard
 noremap <Leader>y "+y
