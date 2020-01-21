@@ -18,8 +18,8 @@ Then symlink the specific plugin directories in your Vim's `pack` directory:
 
 The directory structure under `pack` must be maintained as it is in this
 repository, i.e., `pack/<whatever>/start/<plugin>`. So, to use exactly the
-plugins in this repository, you can symlink the entire [pack](./pack), or select
-categories under pack (e.g., [pack/programming](./pack/programming)), or
+plugins in this repository, you can symlink the entire [pack](./pack), or
+select categories under pack (e.g., [pack/programming](./pack/programming)), or
 inidividual plugins by creating your own.
 
 You should also run `:helptags ALL` for vim to be able to find the plugins'
@@ -29,8 +29,9 @@ help documentation.
 
 ### Universal
 
-The [universal](./pack/universal/start) collection contains general-purpose plugins
-that are "universally" helpful, whether you are coding or just writing text.
+The [universal](./pack/universal/start) collection contains general-purpose
+plugins that are "universally" helpful, whether you are coding or just writing
+text.
 
 #### surround
 
@@ -82,9 +83,9 @@ stuff.
 
 #### endwise
 
-[endwise.vim](https://github.com/tpope/vim-endwise) automatically inserts
-`end` in various programming languages (such as Ruby and shell script). It
-errs on the side of caution, and I have never seen it insert when it shouldn't.
+[endwise.vim](https://github.com/tpope/vim-endwise) automatically inserts `end`
+in various programming languages (such as Ruby and shell script). It errs on
+the side of caution, and I have never seen it insert when it shouldn't.
 
 #### radical
 
@@ -184,8 +185,8 @@ shell commands to vim.
   * `:Unlink` – deletes the file on disk, but keeps the (empty) buffer open
   * `:Rename newname` – renames the current file to `newname` (relative to the
     file's directory)
-  * `:Move newname` – moves the current file to `newname` (relative to
-    the editor's working directory, which is not always the same as the file's
+  * `:Move newname` – moves the current file to `newname` (relative to the
+    editor's working directory, which is not always the same as the file's
     current location)
   * `:Mkdir dir` – create `dir` (relative to the working directory)
   * `:Chmod permissions` – change the permissions of the current file
@@ -197,9 +198,9 @@ shell commands to vim.
 Git commands. You may also add `%{FugitiveStatusline()}` to your statusline
 to see the current branch there.
 
-  * `:G` – git status with keyboard commands affecting the file under the cursor
-    to directly stage/unstage (`-`) files, discard changes (`X`),
-    diff the changes (`=`), etc. (see help with `g?`)
+  * `:G` – git status with keyboard commands affecting the file under the
+    cursor to directly stage/unstage (`-`) files, discard changes (`X`), diff
+    the changes (`=`), etc. (see help with `g?`)
   * `:Gblame` – open an interactive `git blame` in a split view (see help with
     `g?`)
   * `:Gread` – load the commited version of the file into the current buffer,
@@ -215,6 +216,7 @@ to see the current branch there.
   * `:Gbrowse` – open the current file (or selected visual range) on GitHub's
     website (for github-hosted repositories)
   * `:Gpush`, `:Gpull`, `:Gfetch` – push/pull/fetch to/from remote repository
+  * `y^G` – yank the git path to the current file or object
 
 #### gitgutter
 
@@ -342,8 +344,8 @@ to carry around in `.vimrc`.
 
  * `Esc` to close pop-up menus
  * `p` in visual mode replaces the selection with the "put" (yank paste)
- * `^_` in insert mode opens a `=` expression prompt, and the results 
-   are inserted (e.g., `0x20 * 2` inserts `64`)
+ * `^_` in insert mode opens a `=` expression prompt, and the results are
+   inserted (e.g., `0x20 * 2` inserts `64`)
  * `^S` in insert mode opens a `=system("` expression prompt, and the results
    are inserted (e.g., `=system("ls")`)
  * `\y` yanks (copies) to the system clipboard (also in insert mode)
@@ -355,18 +357,18 @@ to carry around in `.vimrc`.
 These require `surround.vim`.
 
  * `SB` in visual mode to wrap the selection in a block (e.g., `{ }` in C)
- * `SE` in visual mode to wrap the selection in exception handling (e.g.,
-   `try` and `catch`)
- * `SF` in visual mode to warp the selection in an `if false { }` block
-   (or its equivalent for various languages)
+ * `SE` in visual mode to wrap the selection in exception handling (e.g., `try`
+   and `catch`)
+ * `SF` in visual mode to warp the selection in an `if false { }` block (or its
+   equivalent for various languages)
 
 #### TBone Bindings
 
  * `\Y` yanks to the tmux buffer
  * `\P` puts from the tmux buffer in normal mode
- * `\P` writes the selection to another tmux pane in insert mode (type
-   the target pane and press enter, e.g., `:Twrite left` writes to the pane
-   on the left side)
+ * `\P` writes the selection to another tmux pane in insert mode (type the
+   target pane and press enter, e.g., `:Twrite left` writes to the pane on the
+   left side)
 
 #### Other Plugin Bindings
 
