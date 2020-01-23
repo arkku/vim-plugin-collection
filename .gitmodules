@@ -54,19 +54,22 @@
 	url = https://github.com/tpope/vim-speeddating.git
 [submodule "pack/integration/start/nerdtree"]
 	path = pack/integration/start/nerdtree
-	url = https://github.com/preservim/nerdtree
+	url = https://github.com/preservim/nerdtree.git
 [submodule "pack/integration/start/nerdtree-git-plugin"]
 	path = pack/integration/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
 [submodule "pack/integration/start/gitgutter"]
 	path = pack/integration/start/gitgutter
-	url = https://github.com/airblade/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "pack/obscure/start/tabular"]
 	path = pack/obscure/start/tabular
-	url = https://github.com/godlygeek/tabular
+	url = https://github.com/godlygeek/tabular.git
 [submodule "pack/ui/start/supertab"]
 	path = pack/ui/start/supertab
-	url = https://github.com/ervandew/supertab
+	url = https://github.com/ervandew/supertab.git
 [submodule "pack/ui/start/buffet"]
 	path = pack/ui/start/buffet
-	url = https://github.com/bagrat/vim-buffet
+	url = https://github.com/bagrat/vim-buffet.git
+[submodule "pack/universal/start/unimpaired"]
+	path = pack/universal/start/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
