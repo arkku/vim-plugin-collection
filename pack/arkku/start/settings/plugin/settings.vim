@@ -51,35 +51,22 @@ if exists('g:vscode')
 endif
 
 if empty(mapcheck('<C-N>', 'n'))
-    map <C-N> :NERDTreeToggle<CR>
+    nmap <C-N> :NERDTreeToggle<CR>
 endif
-
-" Shortcut for the handy ^R=
-if empty(mapcheck('<C-_>', 'i'))
-    inoremap <C-_> <C-R>=
-endif
-"if empty(mapcheck('<C-S>', 'i'))
-"endif
-
-" Make p in visual mode paste over the selection without yanking it
-vnoremap p "_dP
 
 " \y and \p to copy/paste system clipboard
-noremap <Leader>y "+y
-noremap <Leader>p "+p
-vnoremap <Leader>y "+y
-vnoremap <Leader>p "+p
+if empty(mapcheck('<Leader>y', 'n')) && empty(mapcheck('<Leader>p', 'n'))
+    noremap <Leader>y "+y
+    noremap <Leader>p "+p
+endif
 
 " \Y and \P to copy/paste tmux clipboard (vim-tbone plugin)
-noremap <Leader>Y :Tyank<CR>
-noremap <Leader>P :Tput<CR>
-vnoremap <Leader>Y :Tyank<CR>
-vnoremap <Leader>P :Twrite<Space>
-
-" Make vb to be like sb but for vertical splits
-cabbrev vb vert sb
+if empty(mapcheck('<Leader>Y', 'n')) && empty(mapcheck('<Leader>P', 'n'))
+    noremap <Leader>Y :Tyank<CR>
+    nnoremap <Leader>P :Tput<CR>
+    vnoremap <Leader>P :Twrite<Space>
+endif
 
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
-

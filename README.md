@@ -38,13 +38,13 @@ text.
 [surround.vim](https://github.com/tpope/vim-surround) deals with adding,
 removing, and changing "surroundings", such as parentheses.
 
-* `cs"'` – Change surrounding `"` to `'`
-* `cs'<q>` – Change surrounding `'` to `<q>` and `</q>`
-* `cst"` – Change surrounding tags to `"`
-* `ds"` – Remove surrounding "
-* `ysiw)` – Surround word (`iw`) with `()`
-* `ys$]` – Surround to end of line with `[]`
-* `yst,"` – Surround to, but not including, next `,` with `"`
+* `cs"'` – change surrounding `"` to `'`
+* `cs'<q>` – change surrounding `'` to `<q>` and `</q>`
+* `cst"` – change surrounding tags to `"`
+* `ds"` – remove surrounding "
+* `ysiw)` – surround word (`iw`) with `()`
+* `ys$]` – surround to end of line with `[]`
+* `yst,"` – surround to, but not including, next `,` with `"`
 
 Also works in visual mode, e.g., press `V`, make a selection, and then type
 `S<p class="paragraph">` to surround the selection in `<p></p>`, including
@@ -95,9 +95,14 @@ collections to avoid clutter where not needed.
 [commentary.vim](https://github.com/tpope/vim-commentary) helps comment out
 stuff.
 
-* `gcc` – Toggle comment on current line
-* `gc` + motion – Comment target of motion (e.g., `gcap` for paragraph)
-* `gc` in visual mode – Comment selection
+* `gcc` – toggle comment on current line
+* `gc` + motion – comment target of motion (e.g., `gcap` for paragraph)
+* `gc` in visual mode – comment selection
+
+The `gc` also works as a motion target:
+
+* `dgc` – delete the entire comment
+* `gcgc` – uncomment the entire comment
 
 #### endwise
 
@@ -110,10 +115,10 @@ the side of caution, and I have never seen it insert when it shouldn't.
 [radical.vim](https://github.com/glts/vim-radical) helps convert between
 different integer representations, i.e., decimal, hexadecimal and binary.
 
-* `gA` – Shows the integer under the cursor in each supported base
-* `crx` – Converts an integer to hexadecimal (base 16)
-* `crd` – Converts an integer to decimal (base 10)
-* `crb` – Converts an integer to decimal (base 2)
+* `gA` – shows the integer under the cursor in each supported base
+* `crx` – converts an integer to hexadecimal (base 16)
+* `crd` – converts an integer to decimal (base 10)
+* `crb` – converts an integer to decimal (base 2)
 
 #### magnum
 
@@ -325,8 +330,8 @@ There are separate sections for plugins for a specific programming language.
 
 [rvm.vim](https://github.com/tpope/vim-rvm) integrates with [rvm](https://rvm.io).
 
-* `:Rvm use version` – Switch ruby version
-* `:Rvm` – Hunt for the nearest `.rvmrc` relative to the current file and use
+* `:Rvm use version` – switch ruby version
+* `:Rvm` – hunt for the nearest `.rvmrc` relative to the current file and use
    the version from there
 
 #### bundler
@@ -335,7 +340,7 @@ There are separate sections for plugins for a specific programming language.
 [Bundler](https://bundler.io) and adds functionality to related files
 (e.g. `gf` in `Gemfile.lock`).
 
-* `:Bundle command` – Execute `bundler command`
+* `:Bundle command` – execute `bundler command`
 
 ### Lisp
 
@@ -355,38 +360,32 @@ You may also wish to remove the insert mode mappings by setting the option:
 ### Settings
 
 My [settings.vim](./pack/arkku/start/settings/plugin/settings.vim) in the
-`arkku` group contains some of my personal settings and keybindings that I used
-to carry around in `.vimrc`.
+`arkku` group contains some of my personal settings and keybindings for the
+included plugins.
 
 #### General Bindings
 
-* `Esc` o close pop-up menus
-* `p` in visual mode replaces the selection without yanking (you can use `P`
-   if you prefer to yank the replaced text)
-* `^_` in insert mode opens a `=` expression prompt, and the results are
-   inserted (e.g., `0x20 * 2` inserts `64`)
-* `\y` yanks (copies) to the system clipboard (also in insert mode)
-* `\p` puts (pastes) from the system clipboard (also in insert mode)
-* `:vb` is an abbreviation for `:vert sb`
+* `\y` – yanks (copies) to the system clipboard (also in insert mode)
+* `\p` – puts (pastes) from the system clipboard (also in insert mode)
+
+#### TBone Bindings
+
+* `\Y` – yanks to the tmux buffer
+* `\P` – puts from the tmux buffer in normal mode
+* `\P` – writes the selection to another tmux pane in insert mode (type the
+   target pane and press enter, e.g., `:Twrite left` – writes to the pane on the
+   left side)
 
 #### Surround Bindings
 
 These require `surround.vim`.
 
-* `SB` in visual mode to wrap the selection in a block (e.g., `{ }` in C)
-* `SE` in visual mode to wrap the selection in exception handling (e.g., `try`
+* `SB` – in visual mode, wrap the selection in a block (e.g., `{ }` in C)
+* `SE` – in visual mode, wrap the selection in exception handling (e.g., `try`
    and `catch`)
-* `SF` in visual mode to warp the selection in an `if false { }` block (or its
+* `SF` – in visual mode, warp the selection in an `if false { }` block (or its
    equivalent for various languages)
-
-#### TBone Bindings
-
-* `\Y` yanks to the tmux buffer
-* `\P` puts from the tmux buffer in normal mode
-* `\P` writes the selection to another tmux pane in insert mode (type the
-   target pane and press enter, e.g., `:Twrite left` writes to the pane on the
-   left side)
 
 #### Other Plugin Bindings
 
-* `^N` in normal mode to open NERDTree
+* `^N` – in normal mode opens NERDTree
