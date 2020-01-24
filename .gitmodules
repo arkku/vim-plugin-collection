@@ -73,6 +73,3 @@
 [submodule "pack/universal/start/unimpaired"]
 	path = pack/universal/start/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "pack/integration/start/tmux-focus-events"]
-	path = pack/integration/start/tmux-focus-events
-	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
