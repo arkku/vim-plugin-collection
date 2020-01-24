@@ -292,6 +292,14 @@ When in the tree, there are many simple commands:
 [NERDTree Git Plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) adds git
 status indicators to NERDTree.
 
+#### vim-tmux-focus-events
+
+[vim-tmux-focus-events](https://github.com/tmux-plugins/vim-tmux-focus-events)
+allows Vim to receive focus events when running inside tmux. You need to set
+this in your `.tmux.conf` (_not_ `.vimrc`!):
+
+    set -g focus-events on
+
 ### Obscure
 
 The [obscure](./pack/obscure/start) collection is plugins that (in my opinion)
