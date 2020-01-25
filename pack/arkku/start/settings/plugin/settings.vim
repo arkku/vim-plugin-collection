@@ -77,6 +77,18 @@ if empty(mapcheck('<Leader>Y', 'n')) && empty(mapcheck('<Leader>P', 'n'))
     vnoremap <Leader>P :Twrite<Space>
 endif
 
+" Use ag instead of ack
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+
+    if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~ ':Ack'
+        nnoremap <Leader>a :Ack!<Space>
+    endif
+    if empty(mapcheck('<Leader>A', 'n'))
+        nnoremap <Leader>A :execute 'Ack! ' . expand('<cword>')<CR>
+    endif
+endif
+
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
+    runtime! macros/matchit.vim
 endif

@@ -193,19 +193,20 @@ with integrating vim with the operating system and other tools.
 #### CtrlP
 
 [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) is a file finder that maps
-to `^P`. It also allows creating files and directories. Once CtrlP is open:
+to <kbd>Ctrl</kbd>–<kbd>P</kbd>. It also allows creating files and
+directories. Once CtrlP is open:
 
 * type to search for files
-* use arrows or `^J` and `^K` to navigate the files
-* `^F` and `^B` cycle different modes (files, buffers, recently used)
-* `^R` use regex mode for searching
+* use arrows or <kbd>Ctrl</kbd>–<kbd>J</kbd> and <kbd>Ctrl</kbd>–<kbd>K</kbd> to navigate the files
+* <kbd>Ctrl</kbd>–<kbd>F</kbd> and <kbd>Ctrl</kbd>–<kbd>B</kbd> cycle different modes (files, buffers, recently used)
+* <kbd>Ctrl</kbd>–<kbd>R</kbd> use regex mode for searching
 * press enter to open the selected file "full screen"
-* `^T` to open the selected file in a new tab
-* `^X` to open the selected file in a new split (horizontal)
-* `^V` to open the selected file in a new split (vertical)
-* type the file path and then pres `^Y` to create a new file
-* `^Z` mark multiple files
-* `^T` or `^O` open all marked files (`^T` opens in tabs)
+* <kbd>Ctrl</kbd>–<kbd>T</kbd> to open the selected file in a new tab
+* <kbd>Ctrl</kbd>–<kbd>X</kbd> to open the selected file in a new split (horizontal)
+* <kbd>Ctrl</kbd>–<kbd>V</kbd> to open the selected file in a new split (vertical)
+* type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new file
+* <kbd>Ctrl</kbd>–<kbd>Z</kbd> mark multiple files
+* <kbd>Ctrl</kbd>–<kbd>T</kbd> or <kbd>Ctrl</kbd>–<kbd>O</kbd> open all marked files (<kbd>Ctrl</kbd>–<kbd>T</kbd> opens in tabs)
 
 If you have [ag](https://github.com/ggreer/the_silver_searcher) installed, you
 can configure CtrlP to use it:
@@ -300,9 +301,9 @@ including bidirectional access to its copypaste buffer.
 
 [NERDTree](https://github.com/preservim/nerdtree) is a sidebar file explorer.
 It can be toggled with `:NERDTreeToggle`, but you probably want to bind it to a
-key, e.g., `^N`:
+key, e.g., <kbd>Ctrl</kbd>–<kbd>N</kbd>:
 
-    map <C-n> :NERDTreeToggle<CR>
+    map <C-N> :NERDTreeToggle<CR>
 
 When in the tree, there are many simple commands:
 
@@ -328,10 +329,30 @@ When in the tree, there are many simple commands:
 [NERDTree Git Plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) adds git
 status indicators to NERDTree.
 
+### notgrep
+
+The [notgrep](./pack/notgrep/start) collection contains plugins that interface
+with the various smarter `grep` replacements, such as Ag and FZF.
+
+#### ack
+
+[ack.vim](https://github.com/mileszs/ack.vim) works just fine with Ag, despite
+its name. In fact, if you have Ag installed, my settings plugin in this
+repository configures it automatically. To set it up manually, set:
+
+    let g:ackprg = 'ag --vimgrep'
+
+The script is used from the command-line with these functions:
+
+* `:Ack ` + query – search and jump automatically to the first result
+* `:Ack! ` + query – search without jumping automatically to the first result
+
+(My settings plugin binds the latter to `\a`.)
+
 ### Obscure
 
-The [obscure](./pack/obscure/start) collection is plugins that (in my opinion)
-have rather limited use, but are still interesting.
+The [obscure](./pack/obscure/start) collection contains plugins that (in my
+opinion) have rather limited use, but are still interesting.
 
 #### tabular
 
@@ -345,11 +366,11 @@ in various ways.
 
 #### speeddating
 
-[vim-speeddating](https://github.com/tpope/vim-speeddating) extends the `^A`
-number increment command to dates.
+[vim-speeddating](https://github.com/tpope/vim-speeddating) extends the
+<kbd>Ctrl</kbd>–<kbd>A</kbd> number increment command to dates.
 
-* `^A` – increments the date under cursor (e.g., 1999-12-31 becomes
-   2000-01-01).
+* <kbd>Ctrl</kbd>–<kbd>A</kbd> – increments the date under cursor (e.g.,
+  1999-12-31 becomes 2000-01-01).
 
 ## Programming Languages
 
@@ -419,6 +440,8 @@ These require `surround.vim`.
 
 #### Other Plugin Bindings
 
-* `^N` – in normal mode opens NERDTree
+* <kbd>Ctrl</kbd>–<kbd>N</kbd> – in normal mode opens NERDTree
+* `\a` – ag search (with Ack plugin) but don't autojump to first match
+* `\A` – start ag search with the word under cursor
 * `\u` – start CtrlPFunky search for functions or markdown headings
 * `\U` – start CtrlPFunky search with the word under the cursor
