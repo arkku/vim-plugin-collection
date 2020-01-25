@@ -20,7 +20,7 @@ The directory structure under `pack` must be maintained as it is in this
 repository, i.e., `pack/<whatever>/start/<plugin>`. So, to use exactly the
 plugins in this repository, you can symlink the entire [pack](./pack), or
 select categories under pack (e.g., [pack/programming](./pack/programming)), or
-inidividual plugins by creating your own.
+individual plugins by creating your own.
 
 You should also run `:helptags ALL` for vim to be able to find the plugins'
 help documentation.
@@ -197,16 +197,17 @@ to <kbd>Ctrl</kbd>–<kbd>P</kbd>. It also allows creating files and
 directories. Once CtrlP is open:
 
 * type to search for files
-* use arrows or <kbd>Ctrl</kbd>–<kbd>J</kbd> and <kbd>Ctrl</kbd>–<kbd>K</kbd> to navigate the files
-* <kbd>Ctrl</kbd>–<kbd>F</kbd> and <kbd>Ctrl</kbd>–<kbd>B</kbd> cycle different modes (files, buffers, recently used)
-* <kbd>Ctrl</kbd>–<kbd>R</kbd> use regex mode for searching
-* press enter to open the selected file "full screen"
-* <kbd>Ctrl</kbd>–<kbd>T</kbd> to open the selected file in a new tab
-* <kbd>Ctrl</kbd>–<kbd>X</kbd> to open the selected file in a new split (horizontal)
-* <kbd>Ctrl</kbd>–<kbd>V</kbd> to open the selected file in a new split (vertical)
-* type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new file
+* arrows or <kbd>Ctrl</kbd>–<kbd>J</kbd> and <kbd>Ctrl</kbd>–<kbd>K</kbd> – navigate
+* <kbd>Ctrl</kbd>–<kbd>F</kbd>, <kbd>Ctrl</kbd>–<kbd>B</kbd> – cycle different modes (files, buffers, recently used)
+* <kbd>Ctrl</kbd>–<kbd>C</kbd> – close the search
+* <kbd>Ctrl</kbd>–<kbd>R</kbd> – use regex mode for searching
+* <kbd>Return</kbd> – open the selected file "full screen"
+* <kbd>Ctrl</kbd>–<kbd>T</kbd> – to open the selected file in a new tab
+* <kbd>Ctrl</kbd>–<kbd>X</kbd> – to open the selected file in a new split (horizontal)
+* <kbd>Ctrl</kbd>–<kbd>V</kbd> – to open the selected file in a new split (vertical)
 * <kbd>Ctrl</kbd>–<kbd>Z</kbd> mark multiple files
-* <kbd>Ctrl</kbd>–<kbd>T</kbd> or <kbd>Ctrl</kbd>–<kbd>O</kbd> open all marked files (<kbd>Ctrl</kbd>–<kbd>T</kbd> opens in tabs)
+* <kbd>Ctrl</kbd>–<kbd>O</kbd> or <kbd>Ctrl</kbd>–<kbd>T</kbd> – open all marked files (<kbd>Ctrl</kbd>–<kbd>T</kbd> opens in tabs)
+* type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new file
 
 If you have [ag](https://github.com/ggreer/the_silver_searcher) installed, you
 can configure CtrlP to use it:
@@ -258,7 +259,7 @@ to see the current branch there.
     the changes (`=`), etc. (see help with `g?`)
 * `:Gblame` – open an interactive `git blame` in a split view (see help with
     `g?`)
-* `:Gread` – load the commited version of the file into the current buffer,
+* `:Gread` – load the committed version of the file into the current buffer,
     as with `git checkout` but the changes can be undone with `u`
 * `:Gedit what` – edit a blob/commit/tag
 * `:Gsplit what` / `:Gvsplit what` – as above, but split
@@ -268,8 +269,7 @@ to see the current branch there.
 * `:Gmerge branch` / `:Grebase branch` – merge/rebase
 * `:Git mergetool` – load merge conflicts into the quickfix list
 * `:Git difftool` – load changes into the quickfix list
-* `:Gbrowse` – open the current file (or selected visual range) on GitHub's
-    website (for github-hosted repositories)
+* `:Gbrowse` – open the current file (or selected visual range) on GitHub
 * `:Gpush`, `:Gpull`, `:Gfetch` – push/pull/fetch to/from remote repository
 * `y^G` – yank the git path to the current file or object
 
@@ -322,7 +322,7 @@ When in the tree, there are many simple commands:
 * `P` – jump to the root node
 * `r` / `R` – refresh current directory / all
 * `m` – display a menu
-* `?` – display inline help
+* `?` – display in-line help
 
 #### NERDTree Git Plugin
 
@@ -400,7 +400,7 @@ There are separate sections for plugins for a specific programming language.
 
 [vim-sexp](https://github.com/guns/vim-sexp) adds various functions and
 mappings for "S-expressions", for use in `Lisp`, `Scheme`, `Clojure`, etc.
-Unfortunately, some of those mappings are rathe un-vimlike, so there is
+Unfortunately, some of those mappings are rather un-vimlike, so there is
 a supplementary plugin
 [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people/)
 which adds more vim-like mappings.
@@ -412,7 +412,7 @@ You may also wish to remove the insert mode mappings by setting the option:
 ### Settings
 
 My [settings.vim](./pack/arkku/start/settings/plugin/settings.vim) in the
-`arkku` group contains some of my personal settings and keybindings for the
+`arkku` group contains some of my personal settings and bindings for the
 included plugins.
 
 #### General Bindings
