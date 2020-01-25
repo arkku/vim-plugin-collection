@@ -394,6 +394,15 @@ There are separate sections for plugins for a specific programming language.
 
 * `:Bundle command` – execute `bundler command`
 
+### Web
+
+Web-related thing are in the their own section.
+
+#### Liquid
+
+[vim-liquid](https://github.com/tpope/vim-liquid) adds support for Liquid
+(e.g., in Jekyll).
+
 ### Lisp
 
 #### sexp

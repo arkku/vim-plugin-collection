@@ -79,3 +79,6 @@
 [submodule "pack/notgrep/start/ack"]
 	path = pack/notgrep/start/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "pack/web/start/liquid"]
+	path = pack/web/start/liquid
+	url = https://github.com/tpope/vim-liquid.git
