@@ -73,3 +73,6 @@
 [submodule "pack/universal/start/unimpaired"]
 	path = pack/universal/start/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "pack/integration/start/ctrlp-funky"]
+	path = pack/integration/start/ctrlp-funky
+	url = https://github.com/tacahiroy/ctrlp-funky.git

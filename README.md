@@ -79,10 +79,20 @@ long, so I will not duplicate it here, but here are some highlights:
 * `]Q`, `[Q` – first/last quickfix
 * `]t`, `[t` – next/previous tag
 * `]T`, `[T` – first/last tag
+* `]b`, `[b` – next/previous buffer
+* `]B`, `[B` – first/last buffer
+* `]a`, `[a` – next/previous argument
+* `]A`, `[A` – first/last argument
 * `]n`, `[n` – next/previous conflict/diff marker (try `d[n` inside a conflict)
 * `]e` , `[e` – exchange this line with the next/previous line
+* `[p`, `]p` – put above/below the current line
 * `[os`, `]os` – toggle `spell` option on/off
+* `[s`, `]s` – next/previous spelling error
 * `]oi`, `[oi` – toggle `ignorecase` option on/off
+* `[u` + motion, `]u` + motion – URL encode/decode (`u` for motion targets
+  line)
+* `[y` + motion, `]y` + motion – string encode/decode (backslash escapes)
+* `[x` + motion, `]x` + motion – XML encode/decode
 
 ### Programming
 
@@ -196,6 +206,27 @@ to `^P`. It also allows creating files and directories. Once CtrlP is open:
 * type the file path and then pres `^Y` to create a new file
 * `^Z` mark multiple files
 * `^T` or `^O` open all marked files (`^T` opens in tabs)
+
+If you have [ag](https://github.com/ggreer/the_silver_searcher) installed, you
+can configure CtrlP to use it:
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor --depth 5 -g ""'
+    let g:ctrlp_use_caching = 0
+
+#### CtrlPFunky
+
+[CtrlPFunky](https://github.com/tacahiroy/ctrlp-funky) extends CtrlP by
+offering a very simple function search without tagfiles for many programming
+languages. This also works for headings in markdown!
+
+Set it up by binding it somewhere, e.g.:
+
+    nnoremap <Leader>u :CtrlPFunky<CR>
+    " narrow the list down with a word under cursor
+    nnoremap <Leader>U :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+
+If these mappings are free, they are also set by my settings plugin (category
+`arkku` in this same repository).
 
 #### eunuch
 
@@ -389,3 +420,5 @@ These require `surround.vim`.
 #### Other Plugin Bindings
 
 * `^N` – in normal mode opens NERDTree
+* `\u` – start CtrlPFunky search for functions or markdown headings
+* `\U` – start CtrlPFunky search with the word under the cursor

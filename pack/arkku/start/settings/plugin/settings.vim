@@ -54,6 +54,16 @@ if empty(mapcheck('<C-N>', 'n'))
     nmap <C-N> :NERDTreeToggle<CR>
 endif
 
+" CtrlPFunky function search
+if empty(mapcheck('<Leader>u', 'n'))
+    nnoremap <Leader>u :CtrlPFunky<CR>
+endif
+
+" CtrlPFunky function search with word under cursor
+if empty(mapcheck('<Leader>U', 'n'))
+    nnoremap <Leader>U :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+endif
+
 " \y and \p to copy/paste system clipboard
 if empty(mapcheck('<Leader>y', 'n')) && empty(mapcheck('<Leader>p', 'n'))
     noremap <Leader>y "+y
