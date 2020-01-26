@@ -76,15 +76,15 @@ settings on/off, edit operations up/down, etc. The complete set of actions is
 long, so I will not duplicate it here, but here are some highlights:
 
 * `]l`, `[l` – next/previous location
-* `]L`, `[L` – first/last location
+* `[L`, `]L` – first/last location
 * `]q`, `[q` – next/previous quickfix error
-* `]Q`, `[Q` – first/last quickfix
+* `[Q`, `]Q` – first/last quickfix
 * `]t`, `[t` – next/previous tag
-* `]T`, `[T` – first/last tag
+* `[T`, `]T` – first/last tag
 * `]b`, `[b` – next/previous buffer
-* `]B`, `[B` – first/last buffer
+* `[B`, `]B` – first/last buffer
 * `]a`, `[a` – next/previous argument
-* `]A`, `[A` – first/last argument
+* `[A`, `]A` – first/last argument
 * `]n`, `[n` – next/previous conflict/diff marker (try `d[n` inside a conflict)
 * `]e` , `[e` – exchange this line with the next/previous line
 * `[p`, `]p` – put above/below the current line
@@ -116,11 +116,90 @@ The `gc` also works as a motion target:
 * `dgc` – delete the entire comment
 * `gcgc` – uncomment the entire comment
 
+#### Syntastic
+
+[Syntastic](https://github.com/vim-syntastic/syntastic) integrates Vim with
+various syntax checkers which populate the location list. It doesn't do any
+syntax checking by itself, so you need to separately install and configure the
+checkers you want. See `:help syntastic`.
+
+To set up a checker, see either `:help syntastic-checkers` or
+`:help syntastic-checkers-<lang>` for the list of supported checkers, install
+the checker(s) you want along `$PATH`, and then enable them in your
+configuration by setting the list `g:syntastic_<lang>_checkers`. For example:
+
+``` vim
+let g:syntastic_swift_checkers = [ 'swiftlint', 'swiftpm' ]
+```
+
+You can check for errors by running `:SyntasticCheck`. The location list may
+not be set unless you configure it (see below), or run `:Errors`, or manually
+call `:SyntasticSetLocList`. The command `:SyntasticToggleMode` toggles between
+active (check on write) and passive (only check when specifically asked). You
+may set the default for different languages by configuritng
+`g:syntastic_mode_map`:
+
+``` vim
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "active_filetypes": ["ruby","c"],
+    \ "passive_filetypes": ["swift"] }
+```
+
+
+Some more configurable options:
+
+``` vim
+" Always populate the location list?
+let g:syntastic_always_populate_loc_list = 1
+
+" Automatically open the list?
+let g:syntastic_auto_loc_list = 0
+
+" Mark errors in the sign column?
+let g:syntastic_enable_signs = 1
+
+" Check when opening a file? (May slow down opening quite a bit!)
+let g:syntastic_check_on_open = 0
+
+" Check on writequit?
+let g:syntastic_check_on_wq = 0
+```
+
+If you wish to view the Syntastic status (i.e., presence of errors) on the
+statusline, you can configure it with something like this:
+
+``` vim
+function! SyntasticStatuslineIfPresent()
+    if exists('g:loaded_syntastic_plugin')
+        let synstatus = SyntasticStatuslineFlag()
+        if !empty(synstatus)
+            return ' ' . synstatus . ' '
+        endif
+    endif
+    return ''
+endfunction
+
+set statusline+=%{SyntasticStatuslineIfPresent()}
+```
+
 #### endwise
 
 [endwise.vim](https://github.com/tpope/vim-endwise) automatically inserts `end`
 in various programming languages (such as Ruby and shell script). It errs on
 the side of caution, and I have never seen it insert when it shouldn't.
+
+#### apathy
+
+[apathy.vim](https://github.com/tpope/vim-apathy) sets the include paths for
+a number of different programming languages. These are some of the standard
+commands that will benefit when paths have been set correctly:
+
+* `gf` – jump to the include file for the word under cursor
+* `:sfind file.h` – open a split with `file.h`
+* `:ilist string` – search for `string` in include files
+* `[i` – show first match for word under cursor in include files
+* `[I` – show all matches for word under cursor in include files
 
 #### radical
 
