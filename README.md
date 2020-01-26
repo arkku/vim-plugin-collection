@@ -248,6 +248,10 @@ nnoremap <Leader>U :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 If these mappings are free, they are also set by my settings plugin (category
 `arkku` in this same repository).
 
+The [ctrlp-funky-liquid](./pack/start/integration/ctrlp-funky-liquid) is
+a local extension, which adds support for the filetype `liquid` by calling the
+Markdown or HTML functions according to the subtype.
+
 #### eunuch
 
 [eunuch.vim](https://github.com/tpope/vim-eunuch) adds aliases for various
