@@ -6,10 +6,12 @@ This repository contains a selection of vim plugins as git submodules.
 
 To install, first clone the repository and get the submodules:
 
-    git clone https://github.com/arkku/vim-plugin-collection.git
-    cd vim-plugin-collection
-    git submodule init
-    git submodule update --init --recursive
+``` sh
+git clone https://github.com/arkku/vim-plugin-collection.git
+cd vim-plugin-collection
+git submodule init
+git submodule update --init --recursive
+```
 
 Then symlink the specific plugin directories in your Vim's `pack` directory:
 
@@ -158,27 +160,33 @@ intrusive changes to the user interface.
 both tabs and buffers. A couple of commands are added:
 
 * `:Bw`/`:Bw!` – wipe the current buffer (i.e., don't have a file in it), but
-    don't close the window (the version with `!` ignores any unsaved changes)
+  don't close the window (the version with `!` ignores any unsaved changes)
 * `:Bonly`/`:Bonly!` – close all other buffers except the current one
 
 You may also wish to make some keyboard shortcuts for this, e.g.:
 
-    nmap <Leader>1 <Plug>BuffetSwitch(1)
-    nmap <Leader>2 <Plug>BuffetSwitch(2)
-    " etc
+``` vim
+nmap <Leader>1 <Plug>BuffetSwitch(1)
+nmap <Leader>2 <Plug>BuffetSwitch(2)
+" etc
 
-    noremap <Tab> :bn<CR>
-    noremap <S-Tab> :bp<CR>
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+```
 
 The sensible mapping shown above are problematic if you press <kbd>Tab</kbd> in
 NERDTree, so I use the following hacks:
 
-    nmap <Tab> <Esc>:silent! NERDTreeClose<CR><Esc>:silent! bn<CR><Esc>
-    nmap <S-Tab> <Esc>:silent! NERDTreeClose<CR><Esc>:silent! bp<CR><Esc>
+``` vim
+nmap <Tab> <Esc>:silent! NERDTreeClose<CR><Esc>:silent! bn<CR><Esc>
+nmap <S-Tab> <Esc>:silent! NERDTreeClose<CR><Esc>:silent! bp<CR><Esc>
+```
 
 Personally I also prefer not to change the UI for the single file, so I set:
 
-    let g:buffet_always_show_tabline = 0
+``` vim
+let g:buffet_always_show_tabline = 0
+```
 
 #### Supertab
 
@@ -197,23 +205,31 @@ to <kbd>Ctrl</kbd>–<kbd>P</kbd>. It also allows creating files and
 directories. Once CtrlP is open:
 
 * type to search for files
-* arrows or <kbd>Ctrl</kbd>–<kbd>J</kbd> and <kbd>Ctrl</kbd>–<kbd>K</kbd> – navigate
-* <kbd>Ctrl</kbd>–<kbd>F</kbd>, <kbd>Ctrl</kbd>–<kbd>B</kbd> – cycle different modes (files, buffers, recently used)
+* arrows or <kbd>Ctrl</kbd>–<kbd>J</kbd> and <kbd>Ctrl</kbd>–<kbd>K</kbd>
+  – navigate
+* <kbd>Ctrl</kbd>–<kbd>F</kbd>, <kbd>Ctrl</kbd>–<kbd>B</kbd> – cycle different
+  modes (files, buffers, recently used)
 * <kbd>Ctrl</kbd>–<kbd>C</kbd> – close the search
 * <kbd>Ctrl</kbd>–<kbd>R</kbd> – use regex mode for searching
 * <kbd>Return</kbd> – open the selected file "full screen"
 * <kbd>Ctrl</kbd>–<kbd>T</kbd> – to open the selected file in a new tab
-* <kbd>Ctrl</kbd>–<kbd>X</kbd> – to open the selected file in a new split (horizontal)
-* <kbd>Ctrl</kbd>–<kbd>V</kbd> – to open the selected file in a new split (vertical)
+* <kbd>Ctrl</kbd>–<kbd>X</kbd> – to open the selected file in a new split
+  (horizontal)
+* <kbd>Ctrl</kbd>–<kbd>V</kbd> – to open the selected file in a new split
+  (vertical)
 * <kbd>Ctrl</kbd>–<kbd>Z</kbd> mark multiple files
-* <kbd>Ctrl</kbd>–<kbd>O</kbd> or <kbd>Ctrl</kbd>–<kbd>T</kbd> – open all marked files (<kbd>Ctrl</kbd>–<kbd>T</kbd> opens in tabs)
-* type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new file
+* <kbd>Ctrl</kbd>–<kbd>O</kbd> or <kbd>Ctrl</kbd>–<kbd>T</kbd> – open all
+  marked files (<kbd>Ctrl</kbd>–<kbd>T</kbd> opens in tabs)
+* type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new
+  file
 
 If you have [ag](https://github.com/ggreer/the_silver_searcher) installed, you
 can configure CtrlP to use it:
 
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --depth 5 -g ""'
-    let g:ctrlp_use_caching = 0
+``` vim
+let g:ctrlp_user_command = 'ag %s -l --nocolor --depth 5 -g ""'
+let g:ctrlp_use_caching = 0
+```
 
 #### CtrlPFunky
 
@@ -223,9 +239,11 @@ languages. This also works for headings in markdown!
 
 Set it up by binding it somewhere, e.g.:
 
-    nnoremap <Leader>u :CtrlPFunky<CR>
-    " narrow the list down with a word under cursor
-    nnoremap <Leader>U :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+``` vim
+nnoremap <Leader>u :CtrlPFunky<CR>
+" narrow the list down with a word under cursor
+nnoremap <Leader>U :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+```
 
 If these mappings are free, they are also set by my settings plugin (category
 `arkku` in this same repository).
@@ -240,10 +258,10 @@ shell commands to vim.
 * `:Delete` – deletes the buffer and its corresponding file on disk
 * `:Unlink` – deletes the file on disk, but keeps the (empty) buffer open
 * `:Rename newname` – renames the current file to `newname` (relative to the
-    file's directory)
+  file's directory)
 * `:Move newname` – moves the current file to `newname` (relative to the
-    editor's working directory, which is not always the same as the file's
-    current location)
+  editor's working directory, which is not always the same as the file's
+  current location)
 * `:Mkdir dir` – create `dir` (relative to the working directory)
 * `:Chmod permissions` – change the permissions of the current file
 * `:Wall` – write every open window
@@ -254,13 +272,13 @@ shell commands to vim.
 Git commands. You may also add `%{FugitiveStatusline()}` to your statusline
 to see the current branch there.
 
-* `:G` – git status with keyboard commands affecting the file under the
-    cursor to directly stage/unstage (`-`) files, discard changes (`X`), diff
-    the changes (`=`), etc. (see help with `g?`)
+* `:G` – git status with keyboard commands affecting the file under the cursor
+  to directly stage/unstage (`-`) files, discard changes (`X`), diff the
+  changes (`=`), etc. (see help with `g?`)
 * `:Gblame` – open an interactive `git blame` in a split view (see help with
-    `g?`)
-* `:Gread` – load the committed version of the file into the current buffer,
-    as with `git checkout` but the changes can be undone with `u`
+  `g?`)
+* `:Gread` – load the committed version of the file into the current buffer, as
+  with `git checkout` but the changes can be undone with `u`
 * `:Gedit what` – edit a blob/commit/tag
 * `:Gsplit what` / `:Gvsplit what` – as above, but split
 * `:Gtabedit what` – as above but in tab
@@ -303,7 +321,9 @@ including bidirectional access to its copypaste buffer.
 It can be toggled with `:NERDTreeToggle`, but you probably want to bind it to a
 key, e.g., <kbd>Ctrl</kbd>–<kbd>N</kbd>:
 
-    map <C-N> :NERDTreeToggle<CR>
+``` vim
+map <C-N> :NERDTreeToggle<CR>
+```
 
 When in the tree, there are many simple commands:
 
@@ -340,7 +360,9 @@ with the various smarter `grep` replacements, such as Ag and FZF.
 its name. In fact, if you have Ag installed, my settings plugin in this
 repository configures it automatically. To set it up manually, set:
 
-    let g:ackprg = 'ag --vimgrep'
+``` vim
+let g:ackprg = 'ag --vimgrep'
+```
 
 The script is used from the command-line with these functions:
 
@@ -398,10 +420,84 @@ There are separate sections for plugins for a specific programming language.
 
 Web-related thing are in the their own section.
 
+#### Markdown
+
+Vim already ships with Markdown support, but [plasticboy's
+vim-markdown](https://github.com/plasticboy/vim-markdown) has some additional
+features. It depends on the [Tabular](https://github.com/godlygeek/tabular),
+which is included in the "obscure" category. Remember to symlink it
+individually if you are not using that category.
+
+Note that currently the default settings for lists are just plain wrong and
+trying to word-wrap them breaks the lists. It can be fixed by adding these
+lines to your configuration (and yes, that is hideous with the double-escaped
+regular expression, but apparently no markdown plugin for vim has working list
+and comment patterns so we need to patch it):
+
+``` vim
+let g:vim_markdown_auto_insert_bullets=0
+let g:vim_markdown_new_list_item_indent=0
+au FileType markdown setlocal formatlistpat=^\\s*\\d\\+[.\)]\\s\\+\\\|^\\s*[*+~-]\\s\\+\\\|^\\(\\\|[*#]\\)\\[^[^\\]]\\+\\]:\\s | setlocal comments=n:> | setlocal formatoptions+=cn
+```
+
+This will allow formatting (e.g., `gqap`) to work on lists and blockquotes, and
+despite the `new_list_item_indent` being zero, successive lines of multi-line
+lists will be indented correctly. You will lose auto-insertion of bullet
+points, but that is a minor inconvenience. (However, since these are somewhat
+invasive changes and there are alternative `vim-markdown` plugins, I am _not_
+setting these options in my settings plugin.)
+
+Some other options you may wish to enable:
+
+``` vim
+" Allow YAML frontmatter (e.g., Jekyll)
+let g:vim_markdown_frontmatter=1
+
+" Enable ~~ strikethrough
+let g:vim_markdown_strikethrough=1
+
+" Allow LaTeX match with $ and $$
+let g:vim_markdown_math=1
+
+" Allow links to markdown files work without extensions
+let g:vim_markdown_no_extensions_in_markdown=1
+```
+
+To enable syntax highlighting in fenced code blocks, specify them in the list
+`g:markdown_fenced_languages`:
+
+``` vim
+let g:markdown_fenced_languages = [ 'c', 'bash=sh', 'ruby' ]
+```
+
+Note that specifying a language you don't have support for gives an error, so
+if you recycle the same configuration in mixed evironments, you should check
+first:
+
+``` vim
+let g:markdown_fenced_languages = []
+
+for pl in [ 'sh', 'c', 'ruby', 'swift', 'javascript', 'json' ]
+    if index(getcompletion(pl, 'filetype'), pl) >= 0
+        call add(g:markdown_fenced_languages, pl)
+    endif
+endfor
+```
+
 #### Liquid
 
 [vim-liquid](https://github.com/tpope/vim-liquid) adds support for Liquid
-(e.g., in Jekyll).
+(e.g., in Jekyll). Note that currently syntax highlighting for other languages
+in Liquid Markdown files doesn't work. However, you can just `set ft=markdown`
+to toggle it on the fly when needed.
+
+Also, you may need to unbreak formatting of lists the same way as for
+`vim-markdown` (see above), but this time the filetype is `liquid` and you need
+to check for the subtype in `b:liquid_subtype`:
+
+``` vim
+au FileType liquid if exists('b:liquid_subtype') && b:liquid_subtype == 'markdown' | setlocal formatlistpat=^\\s*\\d\\+[.\)]\\s\\+\\\|^\\s*[*+~-]\\s\\+\\\|^\\(\\\|[*#]\\)\\[^[^\\]]\\+\\]:\\s | setlocal comments=n:> | setlocal formatoptions+=cn | endif
+```
 
 ### Lisp
 
@@ -416,7 +512,9 @@ which adds more vim-like mappings.
 
 You may also wish to remove the insert mode mappings by setting the option:
 
-    let g:sexp_enable_insert_mode_mappings = 0
+``` vim
+let g:sexp_enable_insert_mode_mappings = 0
+```
 
 ### Settings
 
@@ -434,8 +532,8 @@ included plugins.
 * `\Y` – yanks to the tmux buffer
 * `\P` – puts from the tmux buffer in normal mode
 * `\P` – writes the selection to another tmux pane in insert mode (type the
-   target pane and press enter, e.g., `:Twrite left` – writes to the pane on the
-   left side)
+  target pane and press enter, e.g., `:Twrite left` – writes to the pane on the
+  left side)
 
 #### Surround Bindings
 
@@ -443,9 +541,9 @@ These require `surround.vim`.
 
 * `SB` – in visual mode, wrap the selection in a block (e.g., `{ }` in C)
 * `SE` – in visual mode, wrap the selection in exception handling (e.g., `try`
-   and `catch`)
+  and `catch`)
 * `SF` – in visual mode, warp the selection in an `if false { }` block (or its
-   equivalent for various languages)
+  equivalent for various languages)
 
 #### Other Plugin Bindings
 
@@ -454,3 +552,4 @@ These require `surround.vim`.
 * `\A` – start ag search with the word under cursor
 * `\u` – start CtrlPFunky search for functions or markdown headings
 * `\U` – start CtrlPFunky search with the word under the cursor
+

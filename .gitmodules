@@ -82,3 +82,6 @@
 [submodule "pack/web/start/liquid"]
 	path = pack/web/start/liquid
 	url = https://github.com/tpope/vim-liquid.git
+[submodule "pack/web/start/plasticboy-markdown"]
+	path = pack/web/start/plasticboy-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
