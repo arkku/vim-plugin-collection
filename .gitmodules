@@ -85,3 +85,6 @@
 [submodule "pack/web/start/plasticboy-markdown"]
 	path = pack/web/start/plasticboy-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "pack/swift/start/swift"]
+	path = pack/swift/start/swift
+	url = https://github.com/keith/swift.vim.git

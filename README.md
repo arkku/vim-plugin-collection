@@ -465,6 +465,9 @@ let g:vim_markdown_math=1
 
 " Allow links to markdown files work without extensions
 let g:vim_markdown_no_extensions_in_markdown=1
+
+" Use HTML comments rather than blockquote
+au FileType markdown setlocal commentstring=<!--%s-->
 ```
 
 To enable syntax highlighting in fenced code blocks, specify them in the list
@@ -502,6 +505,23 @@ to check for the subtype in `b:liquid_subtype`:
 ``` vim
 au FileType liquid if exists('b:liquid_subtype') && b:liquid_subtype == 'markdown' | setlocal formatlistpat=^\\s*\\d\\+[.\)]\\s\\+\\\|^\\s*[*+~-]\\s\\+\\\|^\\(\\\|[*#]\\)\\[^[^\\]]\\+\\]:\\s | setlocal comments=n:> | setlocal formatoptions+=cn | endif
 ```
+
+Personally I also set the comment string to use Liquid, rather than HTML,
+comments:
+
+``` vim
+au FileType liquid setlocal commentstring={%\ comment\ %}%s{%\ endcomment\ %}
+```
+
+### Swift
+
+[swift.vim](https://github.com/keith/swift.vim) adds Swift file type detection
+and syntax highlighting support. Note that this is _not_ the version from the
+[official Swift repository](https://github.com/apple/swift/tree/master/utils/vim),
+since that ironically doesn't seem to be as up-to-date and also sets
+indentation to 2 spaces, which is not only unnecessarily intrusive, but also
+contradictory to the Swift Programming Language book and XCode default
+settings.
 
 ### Lisp
 
