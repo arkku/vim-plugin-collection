@@ -253,14 +253,6 @@ noremap <Tab> :bn<CR>
 noremap <S-Tab> :bp<CR>
 ```
 
-The sensible mapping shown above are problematic if you press <kbd>Tab</kbd> in
-NERDTree, so I use the following hacks:
-
-``` vim
-nmap <Tab> <Esc>:silent! NERDTreeClose<CR><Esc>:silent! bn<CR><Esc>
-nmap <S-Tab> <Esc>:silent! NERDTreeClose<CR><Esc>:silent! bp<CR><Esc>
-```
-
 Personally I also prefer not to change the UI for the single file, so I set:
 
 ``` vim
@@ -398,41 +390,45 @@ including bidirectional access to its copypaste buffer.
 * `:Tput` – put (paste) from `tmux` buffer
 * `:Tattach` – attach to a `tmux` session from outside of it
 
-#### NERDTree
+#### vinegar
 
-[NERDTree](https://github.com/preservim/nerdtree) is a sidebar file explorer.
-It can be toggled with `:NERDTreeToggle`, but you probably want to bind it to a
-key, e.g., <kbd>Ctrl</kbd>–<kbd>N</kbd>:
+[vinegar.vim](https://github.com/tpope/vim-vinegar) enhances the built-in file
+explorer. I eventually decided to discard the more heavy and intrusive
+[NERDTree](https://github.com/preservim/nerdtree) in favour of this and CtrlP.
 
-``` vim
-map <C-N> :NERDTreeToggle<CR>
+In any file:
+
+* `-` – (yes, just a single hyphen) _in any file_ switch to the file explorer
+  in the current file's directory (or go up a directory if you are in the
+  file explorer)
+
+In the file explorer:
+
+* <kbd>Ctrl</kbd>-<kbd>6</kbd> (`C-^`) – switch back to the file you were in
+* `~` – go to the home directory
+* `gh` – toggle hiding of dotfiles
+
+Actions on files currently at the cursor:
+
+* `y.` – yank the absolute path to the file
+* `.` – put the file's path at the end of a `:` command-line, e.g., `.grep foo`
+  will search for `foo` in the file
+* `!` – put the file's path at the end of a `!` command-line, e.g., `!chmod +x`
+  (recall that `!` executes shell commands)
+
+Some settings you may wish to use to make it fancier:
+
+```
+let g:netrw_liststyle=3
+let g:netrw_browse_split=0
+let g:netrw_preview=1
+let g:netrw_winsize=25
+let g:netrw_altv=1
+let g:netrw_banner=0
+let g:netrw_special_syntax=1
 ```
 
-When in the tree, there are many simple commands:
-
-* `o` – open the file (or expand directory)
-* `t` – open the file in a tab
-* `T` – open the file in a tab, but don't focus the new tab
-* `s` – open the file in a vertical split
-* `i` – open the file in a horizontal split
-* `go`, `gs`, `gi` – as without `g` but don't focus the new window
-* `C` – change the root directory
-* `u` – move the root up one directory
-* `O` – recursively expand a directory
-* `x` – close the current selection's parent directory
-* `X` – close all children of a directory
-* `p` – jump to the current selection's parent
-* `P` – jump to the root node
-* `r` / `R` – refresh current directory / all
-* `m` – display a menu
-* `?` – display in-line help
-
-#### NERDTree Git Plugin
-
-[NERDTree Git Plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) adds git
-status indicators to NERDTree.
-
-### notgrep
+#### notgrep
 
 The [notgrep](./pack/notgrep/start) collection contains plugins that interface
 with the various smarter `grep` replacements, such as Ag and FZF.
@@ -627,6 +623,12 @@ included plugins.
 
 #### General Bindings
 
+* <kbd>Tab</kbd> / <kbd>Shift</kbd>–<kbd>Tab</kbd> – if there are multiple
+  windows, cycle between them (<kbd>Shift</kbd> alters the direction),
+  otherwise cycle between buffers
+* <kbd>Ctrl</kbd>–<kbd>N</kbd> – in normal mode toggles file explorer in
+  a split view (use `netrw` settings to change how it looks and what size it
+  opens at; see under `vinegar` above)
 * `\y` – yanks (copies) to the system clipboard (also in insert mode)
 * `\p` – puts (pastes) from the system clipboard (also in insert mode)
 
@@ -650,7 +652,6 @@ These require `surround.vim`.
 
 #### Other Plugin Bindings
 
-* <kbd>Ctrl</kbd>–<kbd>N</kbd> – in normal mode opens NERDTree
 * `\a` – ag search (with Ack plugin) but don't autojump to first match
 * `\A` – start ag search with the word under cursor
 * `\u` – start CtrlPFunky search for functions or markdown headings

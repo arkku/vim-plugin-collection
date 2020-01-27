@@ -50,8 +50,34 @@ if exists('g:vscode')
     finish
 endif
 
+
+" Cycle windows if there are more than one, otherwise cycle buffers
+" The argument is one of 'n', 'p', 'n!', or 'p!' (equivalent to the
+" commands 'bn', 'bp', etc.
+function! BufferCycleTab(direction)
+    let wincount = winnr("$")
+    if wincount > 1
+        " There are several windows, cycle them
+        if a:direction == "p" || a:direction == "p!"
+            exe "wincmd W"
+        else
+            exe "wincmd w"
+        endif
+    else
+        " Only one window, cycle buffers instead
+        exe "silent! b" . a:direction
+    endif
+endfunction
+
+" Tab to cycle windows or buffers
+if empty(mapcheck('<Tab>', 'n'))
+    nnoremap <silent> <Tab> <Esc>:call BufferCycleTab("n")<CR>
+    nnoremap <silent> <S-Tab> <Esc>:call BufferCycleTab("p")<CR>
+endif
+
 if empty(mapcheck('<C-N>', 'n'))
-    nmap <C-N> :NERDTreeToggle<CR>
+    "nmap <C-N> :NERDTreeToggle<CR>
+    nmap <silent> <C-N> :Lexplore<CR>
 endif
 
 " CtrlPFunky function search

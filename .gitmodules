@@ -52,12 +52,6 @@
 [submodule "pack/obscure/start/speeddating"]
 	path = pack/obscure/start/speeddating
 	url = https://github.com/tpope/vim-speeddating.git
-[submodule "pack/integration/start/nerdtree"]
-	path = pack/integration/start/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-[submodule "pack/integration/start/nerdtree-git-plugin"]
-	path = pack/integration/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin
 [submodule "pack/integration/start/gitgutter"]
 	path = pack/integration/start/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -91,3 +85,6 @@
 [submodule "pack/programming/start/syntastic"]
 	path = pack/programming/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "pack/integration/start/vim-vinegar"]
+	path = pack/integration/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
