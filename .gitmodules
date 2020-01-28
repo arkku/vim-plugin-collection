@@ -88,3 +88,6 @@
 [submodule "pack/integration/start/vim-vinegar"]
 	path = pack/integration/start/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule "pack/notgrep/start/fzf.vim"]
+	path = pack/notgrep/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git

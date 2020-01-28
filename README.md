@@ -294,12 +294,12 @@ directories. Once CtrlP is open:
 * type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new
   file
 
-If you have [ag](https://github.com/ggreer/the_silver_searcher) installed, you
-can configure CtrlP to use it:
+If you have [fd](https://github.com/sharkdp/fd) installed, you can configure
+CtrlP to use it:
 
 ``` vim
-let g:ctrlp_user_command = 'ag %s -l --nocolor --depth 5 -g ""'
-let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command='fd -c never -d 5 -- . %s 2>/dev/null'
+let g:ctrlp_use_caching=0
 ```
 
 #### CtrlPFunky
@@ -435,11 +435,14 @@ with the various smarter `grep` replacements, such as Ag and FZF.
 
 #### ack
 
-[ack.vim](https://github.com/mileszs/ack.vim) works just fine with Ag, despite
-its name. In fact, if you have Ag installed, my settings plugin in this
-repository configures it automatically. To set it up manually, set:
+[ack.vim](https://github.com/mileszs/ack.vim) works just fine with ripgrep or
+the silver searcher (ag), despite its name. In fact, if you have either
+installed, my settings plugin in this repository configures it automatically.
+To set it up manually, set:
 
 ``` vim
+let g:ackprg = 'rg --vimgrep --no-heading'
+" or
 let g:ackprg = 'ag --vimgrep'
 ```
 
@@ -449,6 +452,51 @@ The script is used from the command-line with these functions:
 * `:Ack! ` + query – search without jumping automatically to the first result
 
 (My settings plugin binds the latter to `\a`.)
+
+#### fzf
+
+[fzf.vim](https://github.com/junegunn/fzf.vim) adds a bunch of helper functions
+for use with [fzf](https://github.com/junegunn/fzf). Note that fzf itself ships
+with a basic vim plugin, which is required and _not included_ here. If you
+install fzf via your system's plugin manager (or manually), find the path to
+the `fzf.vim` file (the one included with fzf, not the one here) and source it
+in your configuration file. Or do something more elaborate to try to find it:
+
+
+``` vim
+if executable('fzf')
+    " Add fzf if installed
+    if !empty(glob(expand("~/.fzf")))
+        set runtimepath+=~/.fzf
+    elseif !empty(glob("/usr/local/opt/fzf"))
+        set runtimepath+=/usr/local/opt/fzf
+    elseif !empty(glob("/usr/share/doc/fzf/examples/plugin/fzf.vim"))
+        set runtimepath+=/usr/share/doc/fzf/examples
+    endif
+    runtime! plugin/fzf.vim
+endif
+```
+
+Anyway, after you have two different `fzf.vim`s both, and fzf itself,
+installed, you can use these commands to fuzzily search for various things:
+
+* `:FZF` – files
+* `:History` – previously opened files
+* `:GFiles` – git files
+* `:GFiles?` – git files listed in `git status`
+* `:Buffers` – open buffers
+* `:Rg` – ripgrep search results
+* `:Ag` – `ag` search results
+* `:Lines` – lines in loaded buffers
+* `:BLines` – lines in this buffer
+* `:Tags` – tags in the project
+* `:BTags` – tags in this buffer
+* `:Marks` – marks
+* `:History:` – command history
+* `:History/` – search history
+* `:Commits` – git commits (requires `fugitive`, which is included as part of
+  this plugin collection)
+* `:Helptags` – help tags
 
 ### Obscure
 
@@ -655,8 +703,14 @@ These require `surround.vim`.
 
 #### Other Plugin Bindings
 
-* `\a` – ag search (with Ack plugin) but don't autojump to first match
-* `\A` – start ag search with the word under cursor
+* `\a` – search with Ack plugin but don't autojump to first match
+* `\A` – search with Ack plugin for the word under cursor
 * `\u` – start CtrlPFunky search for functions or markdown headings
 * `\U` – start CtrlPFunky search with the word under the cursor
+
+The Ack plugin is configured to use ripgrep (`rg`) if installed, or otherwise
+the silver searcher (`ag`) if installed.
+
+The CtrlP plugin is configured to use `fd` if installed (and
+`g:ctrlp_user_command` is not set).
 

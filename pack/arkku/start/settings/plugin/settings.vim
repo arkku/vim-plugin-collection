@@ -109,10 +109,20 @@ if empty(mapcheck('<Leader>Y', 'n')) && empty(mapcheck('<Leader>P', 'n'))
     vnoremap <Leader>P :Twrite<Space>
 endif
 
-" Use ag instead of ack
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+if executable('fd') && !exists("g:ctrlp_user_command")
+    " Use fd in CtrlP for listing files
+    let g:ctrlp_user_command='fd -c never -- . %s 2>/dev/null'
+endif
 
+if executable('rg')
+    " Use ripgrep over grep
+    let g:ackprg='rg --vimgrep --no-heading'
+elseif executable('ag')
+    " Use Ag over grep
+    let g:ackprg='ag --vimgrep'
+endif
+
+if executable('rg') || executable('ag') || executable('ack')
     if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~ ':Ack'
         nnoremap <Leader>a :Ack!<Space>
     endif
