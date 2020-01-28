@@ -626,6 +626,9 @@ included plugins.
 * <kbd>Tab</kbd> / <kbd>Shift</kbd>–<kbd>Tab</kbd> – if there are multiple
   windows, cycle between them (<kbd>Shift</kbd> alters the direction),
   otherwise cycle between buffers
+* <kbd>Ctrl</kbd>–<kbd>K</kbd> – does the original <kbd>Tab</kbd> function of
+  jumping to the newer cursor (Kursor?) location (mnemonic: OK,
+  <kbd>Ctrl</kbd>–<kbd>O</kbd> is the opposite direction)
 * <kbd>Ctrl</kbd>–<kbd>N</kbd> – in normal mode toggles file explorer in
   a split view (use `netrw` settings to change how it looks and what size it
   opens at; see under `vinegar` above)

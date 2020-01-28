@@ -73,6 +73,12 @@ endfunction
 if empty(mapcheck('<Tab>', 'n'))
     nnoremap <silent> <Tab> <Esc>:call BufferCycleTab("n")<CR>
     nnoremap <silent> <S-Tab> <Esc>:call BufferCycleTab("p")<CR>
+
+    " Map C-K to the old C-I (same as Tab)
+    " mnemonic: OK - C-O / C-K jump cursor (Kursor?) locations
+    if empty(mapcheck('<C-K>', 'n'))
+        nnoremap <silent> <C-K> <C-I>
+    endif
 endif
 
 if empty(mapcheck('<C-N>', 'n'))
