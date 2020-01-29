@@ -91,3 +91,6 @@
 [submodule "pack/notgrep/start/fzf.vim"]
 	path = pack/notgrep/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "pack/tags/start/gutentags-fixed"]
+	path = pack/tags/start/gutentags-fixed
+	url = https://github.com/arkku/vim-gutentags.git
