@@ -249,6 +249,39 @@ set statusline+=%{SyntasticStatuslineIfPresent()}
 in various programming languages (such as Ruby and shell script). It errs on
 the side of caution, and I have never seen it insert when it shouldn't.
 
+#### closer
+
+[closer.vim](https://github.com/rstacruz/vim-closer) is like `endwise`, but for
+brackets `{([` rather than words. That is, it closes any open `{([` but only
+when you press return, which makes it less invasive than most other
+auto-pairing plugins. Unfortunately it is a overly cautious in some cases and
+fails to close after `} else {`, but at the same time it also doesn't
+understand strings and incorrectly closes `printf("%s {",` with `}`. Still,
+I couldn't find a better non-invasive plugin for this, and the false positive
+is a very rare corner case. (The false negative with `} else {` is very common,
+but then again it's no worse than not having a plugin at all.)
+
+Note that if you have an expression mapped to `<CR>` in insert mode, it will
+break when this is loaded. This is the fix I use to combine an expression with
+both `closer` and `endwise`:
+
+``` vim
+" Accept autocompletion on return (and do not insert newline),
+" otherwise use endwise and/or closer. C-X CR for unconditional newline.
+let g:endwise_no_mappings=1
+imap <silent><expr> <Plug>CloserClose ""
+imap <silent><expr> <Plug>DiscretionaryEnd ""
+imap <silent><expr> <Plug>AlwaysEnd ""
+imap <C-X><CR> <CR><Plug>AlwaysEnd
+imap <silent><expr> <CR> (pumvisible() ? "\<C-Y>" : "\<CR>\<Plug>DiscretionaryEnd\<Plug>CloserClose")
+```
+
+To map `closer` to additional file types, use autocommands:
+
+``` vim
+au FileType swift let b:closer = 1 | let b:closer_flags = '([{'
+```
+
 #### apathy
 
 [apathy.vim](https://github.com/tpope/vim-apathy) sets the include paths for

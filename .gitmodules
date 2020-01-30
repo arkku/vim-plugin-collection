@@ -94,3 +94,6 @@
 [submodule "pack/tags/start/gutentags-fixed"]
 	path = pack/tags/start/gutentags-fixed
 	url = https://github.com/arkku/vim-gutentags.git
+[submodule "pack/programming/start/closer"]
+	path = pack/programming/start/closer
+	url = https://github.com/rstacruz/vim-closer.git
