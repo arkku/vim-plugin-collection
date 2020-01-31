@@ -97,3 +97,6 @@
 [submodule "pack/programming/start/closer"]
 	path = pack/programming/start/closer
 	url = https://github.com/rstacruz/vim-closer.git
+[submodule "pack/universal/start/yoink"]
+	path = pack/universal/start/yoink
+	url = https://github.com/svermeulen/vim-yoink.git

@@ -96,6 +96,59 @@ long, so I will not duplicate it here, but here are some highlights:
 * `[y` + motion, `]y` + motion – string encode/decode (backslash escapes)
 * `[x` + motion, `]x` + motion – XML encode/decode
 
+#### yoink
+
+
+[yoink.vim](https://github.com/svermeulen/vim-yoink) enables a yank history
+that can be cycled through when pasting. By default it doesn't do change
+anything since it has no bindings. The way I have it set up looks a bit
+complicated, but it gives no errors even if the plugin isn't installed (so
+I can use the same configuration for an installation without plugins):
+
+``` vim
+let g:yoinkSwapClampAtEnds=0
+let g:yoinkSyncSystemClipboardOnFocus=0
+
+nnoremap <Plug>(YoinkPaste_p) p
+nnoremap <Plug>(YoinkPaste_P) P
+nnoremap <Plug>(YoinkPostPasteSwapBack) j
+nnoremap <Plug>(YoinkPostPasteSwapForward) k
+nmap p <Plug>(YoinkPaste_p)
+nmap P <Plug>(YoinkPaste_P)
+nmap <C-J> <Plug>(YoinkPostPasteSwapBack)
+nmap <C-K> <Plug>(YoinkPostPasteSwapForward)
+```
+
+The mappings are as follows:
+
+* <kbd>Ctrl</kbd>–<kbd>J</kbd> – after put (`p`), rotate to the next oldest
+  yank in history, looping around at the end
+* <kbd>Ctrl</kbd>–<kbd>K</kbd> – after put (`p`), rotate to the next newest
+  yank in history, looping around at the end
+
+If you additionally wish to make yank (`y`) preserve the cursor position,
+unlike the Vim default, add the following:
+
+``` vim
+nnoremap <Plug>(YoinkYankPreserveCursorPosition) y
+xnoremap <Plug>(YoinkYankPreserveCursorPosition) y
+nmap y <Plug>(YoinkYankPreserveCursorPosition)
+xmap y <Plug>(YoinkYankPreserveCursorPosition)
+```
+
+On Neovim (only), you may also wish to preserve the yank history
+persistently. In that case, set:
+
+``` vim
+let g:yoinkSavePersistently=1
+silent! set shada=!,'100,<50,s10,h
+```
+
+The `shada` setting has to include `!` for this to work. Note that you can also
+use this feature to duplicate yanks between multiple different instances of
+`nvim`, by issuing `:wshada` on the "sending" and `:rshada` on the "receiving"
+editor.
+
 ### Tags
 
 The [tags](./pack/tags/start) collection contains plugins for creating and
@@ -340,7 +393,7 @@ You may also wish to make some keyboard shortcuts for this, e.g.:
 ``` vim
 nmap <Leader>1 <Plug>BuffetSwitch(1)
 nmap <Leader>2 <Plug>BuffetSwitch(2)
-" etc
+" etc.
 
 noremap <Tab> :bn<CR>
 noremap <S-Tab> :bp<CR>
@@ -374,7 +427,7 @@ directories. Once CtrlP is open:
 * <kbd>Ctrl</kbd>–<kbd>F</kbd>, <kbd>Ctrl</kbd>–<kbd>B</kbd> – cycle different
   modes (files, buffers, recently used)
 * <kbd>Ctrl</kbd>–<kbd>C</kbd> – close the search
-* <kbd>Ctrl</kbd>–<kbd>R</kbd> – use regex mode for searching
+* <kbd>Ctrl</kbd>–<kbd>R</kbd> – use regexp mode for searching
 * <kbd>Return</kbd> – open the selected file "full screen"
 * <kbd>Ctrl</kbd>–<kbd>T</kbd> – to open the selected file in a new tab
 * <kbd>Ctrl</kbd>–<kbd>X</kbd> – to open the selected file in a new split
