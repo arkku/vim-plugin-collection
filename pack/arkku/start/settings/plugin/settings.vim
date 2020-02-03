@@ -50,7 +50,6 @@ if exists('g:vscode')
     finish
 endif
 
-
 " Cycle windows if there are more than one, otherwise cycle buffers
 " The argument is one of 'n', 'p', 'n!', or 'p!' (equivalent to the
 " commands 'bn', 'bp', etc.
@@ -79,11 +78,6 @@ if empty(mapcheck('<Tab>', 'n'))
     if empty(mapcheck('<C-K>', 'n'))
         nnoremap <silent> <C-K> <C-I>
     endif
-endif
-
-if empty(mapcheck('<C-N>', 'n'))
-    "nmap <C-N> :NERDTreeToggle<CR>
-    nmap <silent> <C-N> :Lexplore<CR>
 endif
 
 " CtrlPFunky function search
