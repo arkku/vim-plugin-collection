@@ -357,6 +357,12 @@ different integer representations, i.e., decimal, hexadecimal and binary.
 * `crd` – converts an integer to decimal (base 10)
 * `crb` – converts an integer to decimal (base 2)
 
+You can prevent these mappings with:
+
+``` vim
+let g:radical_no_mappings=1
+```
+
 #### magnum
 
 [magnum.vim](https://github.com/glts/vim-magnum) is a big integer library. It
@@ -658,6 +664,58 @@ in various ways.
 * `:Tab /=/l2` – align the `=` s in the selected text leaving 2 spaces margin
 * `:Tab /|/c1` – center text between `|`s in the selected text, leaving 1 space margin
 * `:Tab /;/r0` – right-align the `;`s and leave no margin
+
+#### abolish
+
+[abolish.vim](https://github.com/tpope/vim-abolish) is a collection of three
+plugins, each dealing with different ways to change words.
+
+The first, with the titular command, is basically just shorthand for generating
+vim abbreviations (`:iabbrev`) for variants (e.g., plural, different cases,
+etc.)… I don't use this part myself.
+
+##### subvert
+
+The second is a substitution (search/replace) tool that preserves case, and
+allows you to define the plural and singular forms.
+
+At the most basic, the case-preserving functionality alone is useful, e.g., the
+command `:%Subvert/red/blue/g` would change "red, RED, Reddit" into "blue,
+BLUE, Bluedit". And yes, the last is probably not what you wanted, so watch
+out for substrings.
+
+For the plural forms, use `{singular,plural}` anywhere in the strings to define
+the differences, e.g., `:%Subvert/child{,ren}/young {person,people}/g` would
+change "Children, or a child." into "Young people, or a young person." Likewise
+`:%Subvert/rat{,s}/cat{,s}/g` and `:%Subvert/dog{,s}/wol{f,ves}/g` work as
+expected.
+
+As a (possibly unintended) additional feature, this can also be used to swap
+two strings in one operation, e.g., `:%Subvert/{foo,bar}/{bar,foo}/g` will turn
+each "foo" into a "bar", and each "bar" into a "foo".
+
+##### coercion
+
+The third plugin is perhaps the most interesting one for programmers: shortcuts
+to "coerce" words between `snake_case`, `camelCase`, `MixedCase`, `dash-case`,
+`UPPER_CASE`, and `space case`. The bindings are:
+
+* `crs` – to `snake_case`
+* `crc` – to `camelCase`
+* `crm` – to `MixedCase`
+* `cru` – to `UPPER_CASE`
+* `cr-` – to `dash-case` (not reversible)
+* `cr` + <kbd>Space</kbd> – to `space case` (not reversible)
+
+Note that while the first your can be repeatedly changed to one another, the
+last two (`dash-case` and `space case`) are not longer changeable to one of the
+others with these bindings, since the word boundaries change.
+
+If these mappings interfere with something else, you can disable them with:
+
+``` vim
+let g:abolish_no_mappings=1
+```
 
 #### speeddating
 

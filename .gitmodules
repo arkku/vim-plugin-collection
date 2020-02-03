@@ -100,3 +100,6 @@
 [submodule "pack/universal/start/yoink"]
 	path = pack/universal/start/yoink
 	url = https://github.com/svermeulen/vim-yoink.git
+[submodule "pack/obscure/start/abolish"]
+	path = pack/obscure/start/abolish
+	url = https://github.com/tpope/vim-abolish.git
