@@ -253,7 +253,6 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": ["swift"] }
 ```
 
-
 Some more configurable options:
 
 ``` vim
@@ -289,6 +288,15 @@ endfunction
 
 set statusline+=%{SyntasticStatuslineIfPresent()}
 ```
+
+**Note**: While Syntastic is old and has support for plenty of languages, it is
+also, well, old. In particular, at the time of writing the checking happen
+synchronously, which means that if a linter takes a long time to process, your
+Vim will be frozen during this time. Which could be on every save. CoC and/or
+ALE are popular, asynchronous, alternatives, but they are larger and more
+invasive (e.g., because they run stuff in the background all the time, and not
+just on save). So I am not including them in this collection, as I prefer to
+install them manually as needed.
 
 #### endwise
 
@@ -468,6 +476,9 @@ If these mappings are free, they are also set by my settings plugin (category
 The [ctrlp-funky-liquid](./pack/start/integration/ctrlp-funky-liquid) is
 a local extension, which adds support for the filetype `liquid` by calling the
 Markdown or HTML functions according to the subtype.
+
+The [ctrlp-funky-man](./pack/start/integration/ctrlp-funky-man), which makes
+the `man` page headers appear as "functions" in the list.
 
 #### eunuch
 
