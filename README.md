@@ -203,12 +203,6 @@ let g:gutentags_generate_on_missing=0
 let g:gutentags_generate_on_new=0
 ```
 
-**Note:** Currently the upstream version of Gutentags doesn't work if installed
-in a path with spaces, so the version here is a my fork of it. On the odd
-chance that you use this plugin collection and find that my fork is outdated
-and the upstream version has been fixed, please notify me (e.g., make a pull
-request).
-
 ### Programming
 
 The [programming](./pack/programming/start) collection contains plugins that
