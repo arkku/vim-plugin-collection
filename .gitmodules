@@ -109,3 +109,6 @@
 [submodule "pack/typescript/start/vim-jsx-pretty"]
 	path = pack/typescript/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "pack/dart/start/dart-vim-plugin"]
+	path = pack/dart/start/dart-vim-plugin
+	url = https://github.com/dart-lang/dart-vim-plugin.git

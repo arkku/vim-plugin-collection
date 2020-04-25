@@ -861,6 +861,11 @@ settings.
 support. [vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) adds
 support for JSX and TSX files, as well as React.
 
+### Dart
+
+[dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin) adds support
+for Dart. (Do `:CocInstall coc-flutter` for Flutter support with CoC.)
+
 ### Lisp
 
 #### sexp
