@@ -855,6 +855,12 @@ indentation to 2 spaces, which is not only unnecessarily intrusive, but also
 contradictory to the Swift Programming Language book and XCode default
 settings.
 
+### TypeScript
+
+[typescript-vim](https://github.com/leafgarland/typescript-vim) adds Typescript
+support. [vim-jsx-pretty](https://github.com/MaxMEllon/vim-jsx-pretty) adds
+support for JSX and TSX files, as well as React.
+
 ### Lisp
 
 #### sexp

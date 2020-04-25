@@ -103,3 +103,9 @@
 [submodule "pack/tags/start/gutentags"]
 	path = pack/tags/start/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "pack/typescript/start/typescript-vim"]
+	path = pack/typescript/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "pack/typescript/start/vim-jsx-pretty"]
+	path = pack/typescript/start/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
