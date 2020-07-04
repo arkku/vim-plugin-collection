@@ -112,3 +112,6 @@
 [submodule "pack/dart/start/dart-vim-plugin"]
 	path = pack/dart/start/dart-vim-plugin
 	url = https://github.com/dart-lang/dart-vim-plugin.git
+[submodule "pack/dart/vim-flutter"]
+	path = pack/dart/start/vim-flutter
+	url = https://github.com/thosakwe/vim-flutter.git

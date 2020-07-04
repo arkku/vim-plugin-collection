@@ -864,7 +864,17 @@ support for JSX and TSX files, as well as React.
 ### Dart
 
 [dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin) adds support
-for Dart. (Do `:CocInstall coc-flutter` for Flutter support with CoC.)
+for Dart.
+
+[vim-flutter](https://github.com/thosakwe/vim-flutter) adds support for
+Flutter commands, including hot reload on save. Commands added:
+
+* `:FlutterRun` – runs Flutter (enables hot reload on save by default)
+* `:FlutterQuit` – quits Flutter
+* `:FlutterSplit` or `:FlutterVSplit` – opens Flutter output in a split
+* `:FlutterVisualDebug` – toggles visual debugging
+
+Do `:CocInstall coc-flutter` for Flutter support with CoC.
 
 ### Lisp
 
