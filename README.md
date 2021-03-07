@@ -846,6 +846,18 @@ comments:
 au FileType liquid setlocal commentstring={%\ comment\ %}%s{%\ endcomment\ %}
 ```
 
+#### ragtag
+
+[vim-ragtag](https://github.com/tpope/vim-ragtag) adds few bindings to help
+editing HTML, XML, and other tag based files. See `:help ragtag` for details,
+but the few most important _insert mode_ bindings are:
+
+* <kbd>Ctrl</kbd>–<kbd>X</kbd> <kbd>/</kbd> – Close the last open tag
+* <kbd>Ctrl</kbd>–<kbd>X</kbd> <kbd>Space</kbd> – Convert the last word into
+  a tag pair
+* <kbd>Ctrl</kbd>–<kbd>X</kbd> <kbd>Return</kbd> – Convert the last word into
+  a tag pair, with the opening and closing tags on separate lines
+
 ### Swift
 
 [swift.vim](https://github.com/keith/swift.vim) adds Swift file type detection
