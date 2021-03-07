@@ -115,3 +115,6 @@
 [submodule "pack/dart/vim-flutter"]
 	path = pack/dart/start/vim-flutter
 	url = https://github.com/thosakwe/vim-flutter.git
+[submodule "pack/programming/start/jsonc"]
+	path = pack/programming/start/jsonc
+	url = https://github.com/kevinoid/vim-jsonc.git

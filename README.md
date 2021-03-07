@@ -370,17 +370,18 @@ let g:radical_no_mappings=1
 [magnum.vim](https://github.com/glts/vim-magnum) is a big integer library. It
 is here because `radical` depends on it.
 
-#### apathy
+#### jsonc
 
-[apathy.vim](https://github.com/tpope/vim-apathy) sets the include paths for
-a number of different programming languages. These are some of the standard
-commands that will benefit when paths have been set correctly:
+[vim-jsonc](https://github.com/kevinoid/vim-jsonc) adds the filetype `jsonc`,
+which is JSON but with support for comments. Out of the box it is configured
+to only match a few known filenames, such as `coc-settings.json`. You can add
+filenames with:
 
-* `gf` – jump to the include file for the word under cursor
-* `:sfind file.h` – open a split with `file.h`
-* `:ilist string` – search for `string` in include files
-* `[i` – show first match for word under cursor in include files
-* `[I` – show all matches for word under cursor in include files
+``` vim
+autocmd BufNewFile,BufRead some-filename.json setlocal filetype=jsonc
+```
+
+Or simply switch on the fly with `setl ft=jsonc`.
 
 ### UI
 
