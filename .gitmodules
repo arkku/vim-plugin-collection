@@ -118,6 +118,3 @@
 [submodule "pack/programming/start/jsonc"]
 	path = pack/programming/start/jsonc
 	url = https://github.com/kevinoid/vim-jsonc.git
-[submodule "pack/web/start/ragtag"]
-	path = pack/web/start/ragtag
-	url = https://github.com/tpope/vim-ragtag.git
