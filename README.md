@@ -635,6 +635,13 @@ if executable('fzf')
 endif
 ```
 
+On macOS with Homebrew this also works:
+
+``` sh
+mkdir -p ~/.vim/pack/local/start
+ln -s `brew --prefix fzf` ~/.vim/pack/local/start/fzf
+```
+
 Anyway, after you have two different `fzf.vim`s both, and fzf itself,
 installed, you can use these commands to fuzzily search for various things:
 
