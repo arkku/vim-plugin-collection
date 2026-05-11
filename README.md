@@ -222,6 +222,7 @@ let g:gutentags_generate_on_new=0
 ### Programming
 
 The [programming](./pack/programming/start) collection contains plugins that
+dsl/kotlin/core/src/main/kotlin/com/deliveroo/codeless/schema/defs/VectorType.kt
 are for programming in general. Language-specific plugins are in separate
 collections to avoid clutter where not needed.
 
@@ -390,11 +391,18 @@ directories. Once CtrlP is open:
 * type the file path and then pres <kbd>Ctrl</kbd>–<kbd>Y</kbd> to create a new
   file
 
-If you have [fd](https://github.com/sharkdp/fd) installed, you can configure
-CtrlP to use it:
+If you have [ripgrep](https://github.com/BurntSushi/ripgrep) (`rg`) installed,
+configure CtrlP to use it for file listing:
 
 ``` vim
-let g:ctrlp_user_command='fd -c never -d 5 -- . %s 2>/dev/null'
+let g:ctrlp_user_command='rg --files --hidden --follow --glob "!.git" --color=never %s'
+let g:ctrlp_use_caching=0
+```
+
+Or, you can use [fd](https://github.com/sharkdp/fd) is:
+
+``` vim
+let g:ctrlp_user_command='fd --type f --hidden --follow --exclude .git --color=never -- . %s'
 let g:ctrlp_use_caching=0
 ```
 

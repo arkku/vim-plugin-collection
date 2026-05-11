@@ -103,9 +103,16 @@ if empty(mapcheck('<Leader>Y', 'n')) && empty(mapcheck('<Leader>P', 'n'))
     vnoremap <Leader>P :Twrite<Space>
 endif
 
-if executable('fd') && !exists("g:ctrlp_user_command")
-    " Use fd in CtrlP for listing files
-    let g:ctrlp_user_command='fd -c never -- . %s 2>/dev/null'
+if !exists("g:ctrlp_user_command")
+    if executable('rg')
+        " Use ripgrep in CtrlP for listing files
+        let g:ctrlp_user_command='rg --files --hidden --follow --glob "!.git" --color=never %s'
+        let g:ctrlp_use_caching=0
+    elseif executable('fd')
+        " Use fd in CtrlP for listing files
+        let g:ctrlp_user_command='fd --type f --hidden --follow --exclude .git --color=never -- . %s'
+        let g:ctrlp_use_caching=0
+    endif
 endif
 
 if executable('rg')
