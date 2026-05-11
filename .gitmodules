@@ -76,15 +76,12 @@
 [submodule "pack/web/start/liquid"]
 	path = pack/web/start/liquid
 	url = https://github.com/tpope/vim-liquid.git
-[submodule "pack/web/start/plasticboy-markdown"]
-	path = pack/web/start/plasticboy-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "pack/web/start/vim-markdown"]
+	path = pack/web/start/vim-markdown
+	url = https://github.com/preservim/vim-markdown.git
 [submodule "pack/swift/start/swift"]
 	path = pack/swift/start/swift
 	url = https://github.com/keith/swift.vim.git
-[submodule "pack/programming/start/syntastic"]
-	path = pack/programming/start/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "pack/integration/start/vim-vinegar"]
 	path = pack/integration/start/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
@@ -118,3 +115,6 @@
 [submodule "pack/programming/start/jsonc"]
 	path = pack/programming/start/jsonc
 	url = https://github.com/kevinoid/vim-jsonc.git
+[submodule "pack/crystal/start/vim-crystal"]
+	path = pack/crystal/start/vim-crystal
+	url = https://github.com/vim-crystal/vim-crystal.git

@@ -27,6 +27,22 @@ individual plugins by creating your own.
 You should also run `:helptags ALL` for vim to be able to find the plugins'
 help documentation.
 
+### Updating
+
+To update, run:
+
+
+``` sh
+git pull
+git submodule update --init --recursive
+```
+
+Newer versions of this collection occasionally remove plugins that have become
+obsolete or unmaintained. There is a helper script
+[remove-obsolete-submodules](./remove-obsolete-submodules) to help clean up
+leftover stuff from your local git. By default it does a dry run, so it is
+safe to run and see what would happen.
+
 ## Plugins
 
 ### Universal
@@ -222,81 +238,6 @@ The `gc` also works as a motion target:
 
 * `dgc` – delete the entire comment
 * `gcgc` – uncomment the entire comment
-
-#### Syntastic
-
-[Syntastic](https://github.com/vim-syntastic/syntastic) integrates Vim with
-various syntax checkers which populate the location list. It doesn't do any
-syntax checking by itself, so you need to separately install and configure the
-checkers you want. See `:help syntastic`.
-
-To set up a checker, see either `:help syntastic-checkers` or
-`:help syntastic-checkers-<lang>` for the list of supported checkers, install
-the checker(s) you want along `$PATH`, and then enable them in your
-configuration by setting the list `g:syntastic_<lang>_checkers`. For example:
-
-``` vim
-let g:syntastic_swift_checkers = [ 'swiftlint', 'swiftpm' ]
-```
-
-You can check for errors by running `:SyntasticCheck`. The location list may
-not be set unless you configure it (see below), or run `:Errors`, or manually
-call `:SyntasticSetLocList`. The command `:SyntasticToggleMode` toggles between
-active (check on write) and passive (only check when specifically asked). You
-may set the default for different languages by configuring
-`g:syntastic_mode_map`:
-
-``` vim
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "active_filetypes": ["ruby","c"],
-    \ "passive_filetypes": ["swift"] }
-```
-
-Some more configurable options:
-
-``` vim
-" Always populate the location list?
-let g:syntastic_always_populate_loc_list = 1
-
-" Automatically open the list?
-let g:syntastic_auto_loc_list = 0
-
-" Mark errors in the sign column?
-let g:syntastic_enable_signs = 1
-
-" Check when opening a file? (May slow down opening quite a bit!)
-let g:syntastic_check_on_open = 0
-
-" Check on writequit?
-let g:syntastic_check_on_wq = 0
-```
-
-If you wish to view the Syntastic status (i.e., presence of errors) on the
-statusline, you can configure it with something like this:
-
-``` vim
-function! SyntasticStatuslineIfPresent()
-    if exists('g:loaded_syntastic_plugin')
-        let synstatus = SyntasticStatuslineFlag()
-        if !empty(synstatus)
-            return ' ' . synstatus . ' '
-        endif
-    endif
-    return ''
-endfunction
-
-set statusline+=%{SyntasticStatuslineIfPresent()}
-```
-
-**Note**: While Syntastic is old and has support for plenty of languages, it is
-also, well, old. In particular, at the time of writing the checking happen
-synchronously, which means that if a linter takes a long time to process, your
-Vim will be frozen during this time. Which could be on every save. CoC and/or
-ALE are popular, asynchronous, alternatives, but they are larger and more
-invasive (e.g., because they run stuff in the background all the time, and not
-just on save). So I am not including them in this collection, as I prefer to
-install them manually as needed.
 
 #### endwise
 
@@ -766,8 +707,8 @@ Web-related thing are in the their own section.
 
 #### Markdown
 
-Vim already ships with Markdown support, but [plasticboy's
-vim-markdown](https://github.com/plasticboy/vim-markdown) has some additional
+Vim already ships with Markdown support, but
+[preservim/vim-markdown](https://github.com/preservim/vim-markdown) has some additional
 features. It depends on the [Tabular](https://github.com/godlygeek/tabular),
 which is included in the "obscure" category. Remember to symlink it
 individually if you are not using that category.
