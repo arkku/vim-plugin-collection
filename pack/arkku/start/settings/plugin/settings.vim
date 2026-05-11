@@ -116,19 +116,35 @@ if !exists("g:ctrlp_user_command")
 endif
 
 if executable('rg')
-    " Use ripgrep over grep
-    let g:ackprg='rg --vimgrep --no-heading'
-elseif executable('ag')
-    " Use Ag over grep
-    let g:ackprg='ag --vimgrep'
+    " Use ripgrep with :grep
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+    set grepformat=%f:%l:%c:%m
 endif
 
-if executable('rg') || executable('ag') || executable('ack')
-    if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~ ':Ack'
-        nnoremap <Leader>a :Ack!<Space>
+" Map \s / \S to fzf.vim's :Lines (search content of all loaded buffers)
+if exists(':Lines') == 2
+    if empty(mapcheck('<Leader>s', 'n'))
+        nnoremap <Leader>s :Lines<CR>
     endif
-    if empty(mapcheck('<Leader>A', 'n'))
-        nnoremap <Leader>A :execute 'Ack! ' . expand('<cword>')<CR>
+    if empty(mapcheck('<Leader>S', 'n'))
+        nnoremap <Leader>S :execute 'Lines ' . expand('<cword>')<CR>
+    endif
+endif
+
+" Map \a / \A to fzf.vim's :Rg if available
+if exists(':Rg') == 2
+    if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~# ':\(Ack\|Rg\)'
+        nnoremap <Leader>a :Rg<CR>
+    endif
+    if empty(mapcheck('<Leader>A', 'n')) || mapcheck('<Leader>A', 'n') =~# ':\(Ack\|Rg\)'
+        nnoremap <Leader>A :execute 'Rg ' . expand('<cword>')<CR>
+    endif
+elseif executable('rg')
+    if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~# ':\(Ack\|grep\)'
+        nnoremap <Leader>a :silent grep!<Space>
+    endif
+    if empty(mapcheck('<Leader>A', 'n')) || mapcheck('<Leader>A', 'n') =~# ':\(Ack\|grep\)'
+        nnoremap <Leader>A :execute 'silent grep! ' . shellescape(expand('<cword>')) <Bar> redraw! <Bar> botright cwindow<CR>
     endif
 endif
 

@@ -538,27 +538,7 @@ let g:netrw_special_syntax=1
 #### notgrep
 
 The [notgrep](./pack/notgrep/start) collection contains plugins that interface
-with the various smarter `grep` replacements, such as Ag and FZF.
-
-#### ack
-
-[ack.vim](https://github.com/mileszs/ack.vim) works just fine with ripgrep or
-the silver searcher (ag), despite its name. In fact, if you have either
-installed, my settings plugin in this repository configures it automatically.
-To set it up manually, set:
-
-``` vim
-let g:ackprg = 'rg --vimgrep --no-heading'
-" or
-let g:ackprg = 'ag --vimgrep'
-```
-
-The script is used from the command-line with these functions:
-
-* `:Ack ` + query – search and jump automatically to the first result
-* `:Ack! ` + query – search without jumping automatically to the first result
-
-(My settings plugin binds the latter to `\a`.)
+with grep-like search tools, e.g., ripgrep.
 
 #### fzf
 
@@ -575,6 +555,8 @@ if executable('fzf')
     " Add fzf if installed
     if !empty(glob(expand("~/.fzf")))
         set runtimepath+=~/.fzf
+    elseif !empty(glob("/opt/homebrew/opt/fzf"))
+        set runtimepath+=/opt/homebrew/opt/fzf
     elseif !empty(glob("/usr/local/opt/fzf"))
         set runtimepath+=/usr/local/opt/fzf
     elseif !empty(glob("/usr/share/doc/fzf/examples/plugin/fzf.vim"))
@@ -600,7 +582,6 @@ installed, you can use these commands to fuzzily search for various things:
 * `:GFiles?` – git files listed in `git status`
 * `:Buffers` – open buffers
 * `:Rg` – ripgrep search results
-* `:Ag` – `ag` search results
 * `:Lines` – lines in loaded buffers
 * `:BLines` – lines in this buffer
 * `:Tags` – tags in the project
@@ -890,14 +871,18 @@ These require `surround.vim`.
 
 #### Other Plugin Bindings
 
-* `\a` – search with Ack plugin but don't autojump to first match
-* `\A` – search with Ack plugin for the word under cursor
+* `\s` – open fzf's `:Lines` to fuzzy-search lines across all loaded buffers
+* `\S` – open fzf's `:Lines` pre-filled with the word under the cursor
+* `\a` – open fzf's `:Rg` for an interactive ripgrep search
+* `\A` – open fzf's `:Rg` pre-filled with the word under the cursor
 * `\u` – start CtrlPFunky search for functions or markdown headings
 * `\U` – start CtrlPFunky search with the word under the cursor
 
-The Ack plugin is configured to use ripgrep (`rg`) if installed, or otherwise
-the silver searcher (`ag`) if installed.
+If fzf.vim is not installed, `\a` / `\A` fall back to `:silent grep!` which
+populates the quickfix list (use `]q` / `[q` from unimpaired to navigate).
 
-The CtrlP plugin is configured to use `fd` if installed (and
-`g:ctrlp_user_command` is not set).
+Vim's `grepprg` is set to use ripgrep (`rg`) if installed.
+
+The CtrlP plugin is configured to use `rg` for file listing if installed,
+falling back to `fd` (and only if `g:ctrlp_user_command` is not already set).
 
