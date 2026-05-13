@@ -837,21 +837,14 @@ My [settings.vim](./pack/arkku/start/settings/plugin/settings.vim) in the
 `arkku` group contains some of my personal settings and bindings for the
 included plugins.
 
-#### General Bindings
-
-* <kbd>Tab</kbd> / <kbd>Shift</kbd>–<kbd>Tab</kbd> – if there are multiple
-  windows, cycle between them (<kbd>Shift</kbd> alters the direction),
-  otherwise cycle between buffers
-* <kbd>Ctrl</kbd>–<kbd>K</kbd> – does the original <kbd>Tab</kbd> function of
-  jumping to the newer cursor (Kursor?) location (mnemonic: OK,
-  <kbd>Ctrl</kbd>–<kbd>O</kbd> is the opposite direction)
-* <kbd>Ctrl</kbd>–<kbd>N</kbd> – in normal mode toggles file explorer in
-  a split view (use `netrw` settings to change how it looks and what size it
-  opens at; see under `vinegar` above)
-* `\y` – yanks (copies) to the system clipboard (also in insert mode)
-* `\p` – puts (pastes) from the system clipboard (also in insert mode)
+Note: In the past this plugin also included some of my personal settings _not_
+related to the plugins in this collection. Those have now been moved to my
+[dotfiles repository](https://github.com/arkku/dotfiles/blob/master/.vim/plugin/arkku.vim),
+since they included some opionated choices that remapped default bindings.
 
 #### TBone Bindings
+
+These require `vim-tbone`.
 
 * `\Y` – yanks to the tmux buffer
 * `\P` – puts from the tmux buffer in normal mode
@@ -869,20 +862,15 @@ These require `surround.vim`.
 * `SF` – in visual mode, warp the selection in an `if false { }` block (or its
   equivalent for various languages)
 
-#### Other Plugin Bindings
+#### CtrlPFunky Bindings
 
-* `\s` – open fzf's `:Lines` to fuzzy-search lines across all loaded buffers
-* `\S` – open fzf's `:Lines` pre-filled with the word under the cursor
-* `\a` – open fzf's `:Rg` for an interactive ripgrep search
-* `\A` – open fzf's `:Rg` pre-filled with the word under the cursor
+These require the `ctrlp-funky` plugin (included in the `integration`
+category).
+
 * `\u` – start CtrlPFunky search for functions or markdown headings
 * `\U` – start CtrlPFunky search with the word under the cursor
 
-If fzf.vim is not installed, `\a` / `\A` fall back to `:silent grep!` which
-populates the quickfix list (use `]q` / `[q` from unimpaired to navigate).
-
-Vim's `grepprg` is set to use ripgrep (`rg`) if installed.
-
-The CtrlP plugin is configured to use `rg` for file listing if installed,
-falling back to `fd` (and only if `g:ctrlp_user_command` is not already set).
+The CtrlP plugin itself is configured to use `rg` for file listing if
+installed, falling back to `fd` (and only if `g:ctrlp_user_command` is not
+already set).
 

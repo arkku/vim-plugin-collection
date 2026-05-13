@@ -50,36 +50,6 @@ if exists('g:vscode')
     finish
 endif
 
-" Cycle windows if there are more than one, otherwise cycle buffers
-" The argument is one of 'n', 'p', 'n!', or 'p!' (equivalent to the
-" commands 'bn', 'bp', etc.
-function! BufferCycleTab(direction)
-    let wincount = winnr("$")
-    if wincount > 1
-        " There are several windows, cycle them
-        if a:direction == "p" || a:direction == "p!"
-            exe "wincmd W"
-        else
-            exe "wincmd w"
-        endif
-    else
-        " Only one window, cycle buffers instead
-        exe "silent! b" . a:direction
-    endif
-endfunction
-
-" Tab to cycle windows or buffers
-if empty(mapcheck('<Tab>', 'n'))
-    nnoremap <silent> <Tab> <Esc>:call BufferCycleTab("n")<CR>
-    nnoremap <silent> <S-Tab> <Esc>:call BufferCycleTab("p")<CR>
-
-    " Map C-K to the old C-I (same as Tab)
-    " mnemonic: OK - C-O / C-K jump cursor (Kursor?) locations
-    if empty(mapcheck('<C-K>', 'n'))
-        nnoremap <silent> <C-K> <C-I>
-    endif
-endif
-
 " CtrlPFunky function search
 if empty(mapcheck('<Leader>u', 'n'))
     nnoremap <Leader>u :CtrlPFunky<CR>
@@ -88,12 +58,6 @@ endif
 " CtrlPFunky function search with word under cursor
 if empty(mapcheck('<Leader>U', 'n'))
     nnoremap <Leader>U :execute 'CtrlPFunky ' . expand('<cword>')<CR>
-endif
-
-" \y and \p to copy/paste system clipboard
-if empty(mapcheck('<Leader>y', 'n')) && empty(mapcheck('<Leader>p', 'n'))
-    noremap <Leader>y "+y
-    noremap <Leader>p "+p
 endif
 
 " \Y and \P to copy/paste tmux clipboard (vim-tbone plugin)
@@ -112,39 +76,6 @@ if !exists("g:ctrlp_user_command")
         " Use fd in CtrlP for listing files
         let g:ctrlp_user_command='fd --type f --hidden --follow --exclude .git --color=never -- . %s'
         let g:ctrlp_use_caching=0
-    endif
-endif
-
-if executable('rg')
-    " Use ripgrep with :grep
-    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-    set grepformat=%f:%l:%c:%m
-endif
-
-" Map \s / \S to fzf.vim's :Lines (search content of all loaded buffers)
-if exists(':Lines') == 2
-    if empty(mapcheck('<Leader>s', 'n'))
-        nnoremap <Leader>s :Lines<CR>
-    endif
-    if empty(mapcheck('<Leader>S', 'n'))
-        nnoremap <Leader>S :execute 'Lines ' . expand('<cword>')<CR>
-    endif
-endif
-
-" Map \a / \A to fzf.vim's :Rg if available
-if exists(':Rg') == 2
-    if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~# ':\(Ack\|Rg\)'
-        nnoremap <Leader>a :Rg<CR>
-    endif
-    if empty(mapcheck('<Leader>A', 'n')) || mapcheck('<Leader>A', 'n') =~# ':\(Ack\|Rg\)'
-        nnoremap <Leader>A :execute 'Rg ' . expand('<cword>')<CR>
-    endif
-elseif executable('rg')
-    if empty(mapcheck('<Leader>a', 'n')) || mapcheck('<Leader>a', 'n') =~# ':\(Ack\|grep\)'
-        nnoremap <Leader>a :silent grep!<Space>
-    endif
-    if empty(mapcheck('<Leader>A', 'n')) || mapcheck('<Leader>A', 'n') =~# ':\(Ack\|grep\)'
-        nnoremap <Leader>A :execute 'silent grep! ' . shellescape(expand('<cword>')) <Bar> redraw! <Bar> botright cwindow<CR>
     endif
 endif
 
