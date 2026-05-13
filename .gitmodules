@@ -115,3 +115,12 @@
 [submodule "pack/crystal/start/vim-crystal"]
 	path = pack/crystal/start/vim-crystal
 	url = https://github.com/vim-crystal/vim-crystal.git
+[submodule "nvim-pack/treesitter/start/nvim-treesitter"]
+	path = nvim-pack/treesitter/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim-pack/treesitter/start/nvim-treesitter-textobjects"]
+	path = nvim-pack/treesitter/start/nvim-treesitter-textobjects
+	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
+[submodule "nvim-pack/treesitter/start/nvim-treesitter-context"]
+	path = nvim-pack/treesitter/start/nvim-treesitter-context
+	url = https://github.com/nvim-treesitter/nvim-treesitter-context.git

@@ -27,6 +27,20 @@ individual plugins by creating your own.
 You should also run `:helptags ALL` for vim to be able to find the plugins'
 help documentation.
 
+### Neovim-only plugins
+
+A second top-level directory, [nvim-pack](./nvim-pack), holds categories of
+plugins that depend on Neovim-specific features (Lua, the built-in treesitter
+runtime, etc.) and would either be inert or error in plain Vim. Treat it the
+same as `pack` but symlink only on Neovim machines:
+
+``` sh
+ln -sfn <repo>/nvim-pack/<category> ~/.local/share/nvim/site/pack/<category>
+```
+
+Plain Vim users simply don't symlink anything under `nvim-pack` and the rest
+of the collection continues to work unchanged.
+
 ### Updating
 
 To update, run:
@@ -873,4 +887,101 @@ category).
 The CtrlP plugin itself is configured to use `rg` for file listing if
 installed, falling back to `fd` (and only if `g:ctrlp_user_command` is not
 already set).
+
+## Neovim-Only
+
+Plugins under [nvim-pack](./nvim-pack) require Neovim and would break or be
+inert under plain Vim. Each category is documented below.
+
+I recommend linking the desired categories into
+`~/.local/share/nvim/site/pack`. If linked into `~/.vim/pack` they will cause
+errors if you ever start the regular vim, and linked into
+`~/.config/nvim/pack` they might load too early and conflict with some
+configurations.
+
+### Treesitter
+
+Neovim ships with a `libtreesitter` runtime built in; what's missing is the
+glue to make use of it, plus the *parsers* for individual languages. The
+plugins below provide that glue. They live in
+[nvim-pack/treesitter](./nvim-pack/treesitter).
+
+
+#### Dependencies
+
+A working C compiler so that `:TSUpdate` / `:TSInstall` can compile parsers
+locally, and the `tree-sitter` command-line utility on `$PATH`.
+
+##### macOS
+
+``` sh
+brew install tree-sitter-cli
+```
+
+##### Debian
+
+``` sh
+apt install build-essential tree-sitter-cli
+```
+
+#### nvim-treesitter
+
+[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) provides
+treesitter-based syntax highlighting, indentation, and incremental selection.
+
+Language support must be installed with `:TSInstall <language>`.
+
+``` vim
+:TSUpdate          " install/update parsers tracked in lockfile.json
+:TSInstall swift kotlin c objc go python ruby typescript zsh bash make markdown
+```
+
+#### nvim-treesitter-textobjects
+
+[nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+adds text objects driven by the treesitter parse tree: `@function.outer`,
+`@function.inner`, `@class.outer`, `@parameter.inner`, etc., usable with any
+operator (`v`, `d`, `y`, `c`).
+
+Depends on `nvim-treesitter` and on parsers being installed for the languages
+you use it in. No keybindings are added by default — you must declare them
+in the `nvim-treesitter` setup:
+
+``` lua
+require('nvim-treesitter.configs').setup {
+  -- ... other modules ...
+  textobjects = {
+    select = {
+      enable    = true,
+      lookahead = true,
+      keymaps = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+        ['ap'] = '@parameter.outer',
+        ['ip'] = '@parameter.inner',
+      },
+    },
+    move = {
+      enable = true,
+      goto_next_start     = { [']f'] = '@function.outer', [']c'] = '@class.outer' },
+      goto_previous_start = { ['[f'] = '@function.outer', ['[c'] = '@class.outer' },
+    },
+  },
+}
+```
+
+With the above, `vif` selects inside the current function, `daf` deletes
+around the function (including signature and braces), `cic` changes inside
+the class, and `]f` / `[f` jump between functions.
+
+#### nvim-treesitter-context
+
+[nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+shows a sticky header at the top of the window with the surrounding context
+(function, class, block) as you scroll inside a long file.
+
+Can be enabled from vim with `:TSContext enable` or toggled with
+`:TSContext toggle`.
 
