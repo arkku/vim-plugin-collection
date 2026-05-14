@@ -909,8 +909,7 @@ plugins below provide that glue. They live in
 
 #### Dependencies
 
-A working C compiler so that `:TSUpdate` / `:TSInstall` can compile parsers
-locally, and the `tree-sitter` command-line utility on `$PATH`.
+A working C compiler and `tree-sitter` command-line utility on `$PATH`.
 
 ##### macOS
 
@@ -926,6 +925,12 @@ apt install build-essential tree-sitter-cli
 
 #### nvim-treesitter
 
+This plugin has been archived, so it's presumably no longer being
+developed. Also different nvim versions need a different version, so I can't
+put a single definitive version in this collection. nvim 0.12+ includes
+sufficient tree-sitter functionality anyway to not really need this, but
+you may want to install this locally on older systems.
+
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) provides
 treesitter-based syntax highlighting, indentation, and incremental selection.
 
@@ -935,14 +940,6 @@ Language support must be installed with `:TSInstall <language>`.
 :TSUpdate          " install/update parsers tracked in lockfile.json
 :TSInstall swift kotlin c objc go python ruby typescript zsh bash make markdown
 ```
-
-**Note**: This plugin has been archived. The treesitter functionality itself
-is present in nvim 0.12+ as built-in, but there is no `:TSInstall` anymore.
-I'm keeping this plugin in this collection for now (e.g., Debian 13 doesn't
-currently have the most recent nvim in official repos), but if you are on
-nvim 0.12+ you may consider taking only the other plugins from this group and
-not installing this one. I will remove this from the collection once Debian
-stable has a version of nvim with built in treesitter.
 
 #### nvim-treesitter-textobjects
 
