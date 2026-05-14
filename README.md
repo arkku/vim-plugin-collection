@@ -936,6 +936,14 @@ Language support must be installed with `:TSInstall <language>`.
 :TSInstall swift kotlin c objc go python ruby typescript zsh bash make markdown
 ```
 
+**Note**: This plugin has been archived. The treesitter functionality itself
+is present in nvim 0.12+ as built-in, but there is no `:TSInstall` anymore.
+I'm keeping this plugin in this collection for now (e.g., Debian 13 doesn't
+currently have the most recent nvim in official repos), but if you are on
+nvim 0.12+ you may consider taking only the other plugins from this group and
+not installing this one. I will remove this from the collection once Debian
+stable has a version of nvim with built in treesitter.
+
 #### nvim-treesitter-textobjects
 
 [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
@@ -943,45 +951,37 @@ adds text objects driven by the treesitter parse tree: `@function.outer`,
 `@function.inner`, `@class.outer`, `@parameter.inner`, etc., usable with any
 operator (`v`, `d`, `y`, `c`).
 
-Depends on `nvim-treesitter` and on parsers being installed for the languages
-you use it in. No keybindings are added by default — you must declare them
-in the `nvim-treesitter` setup:
-
-``` lua
-require('nvim-treesitter.configs').setup {
-  -- ... other modules ...
-  textobjects = {
-    select = {
-      enable    = true,
-      lookahead = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ['ap'] = '@parameter.outer',
-        ['ip'] = '@parameter.inner',
-      },
-    },
-    move = {
-      enable = true,
-      goto_next_start     = { [']f'] = '@function.outer', [']c'] = '@class.outer' },
-      goto_previous_start = { ['[f'] = '@function.outer', ['[c'] = '@class.outer' },
-    },
-  },
-}
-```
-
-With the above, `vif` selects inside the current function, `daf` deletes
-around the function (including signature and braces), `cic` changes inside
-the class, and `]f` / `[f` jump between functions.
+This needs Lua configuration, please see the examples in the plugin repository.
+Once I figure out whether I want to start using this over coc.nvim, I may
+update this collection with pre-made settings.
 
 #### nvim-treesitter-context
 
 [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
 shows a sticky header at the top of the window with the surrounding context
-(function, class, block) as you scroll inside a long file.
+(function, class, block) as you scroll, i.e., see which function/class you are
+in when the function itself is no longer on screen.
 
-Can be enabled from vim with `:TSContext enable` or toggled with
+Can be enabled from nvim with `:TSContext enable` or toggled with
 `:TSContext toggle`.
 
+### tree-sitter-manager.nvim
+
+[tree-sitter-manager.nvim](https://github.com/romus204/tree-sitter-manager.nvim)
+is a replacement for the nvim-treesitter plugin that has been archived (see
+above). It can install treesitter parsers with a simple UI. This is a very new
+plugin, so it's not yet clear whether it will become The Way to install
+treesitter parsers going forward. I'm including it since it seems harmless to
+have if not used.
+
+This plugin needs to be actively enabled, the simplest being:
+
+``` vim
+lua require("tree-sitter-manager").setup({})
+```
+
+After that you can launch the UI with `:TSManager` and install parsers from
+a list. See the plugin repo for other things it can do.
+
+In theory you don't even need to permanently configure anything, since the
+parser it installs will remain usable without the plugin.

@@ -124,3 +124,6 @@
 [submodule "nvim-pack/treesitter/start/nvim-treesitter-context"]
 	path = nvim-pack/treesitter/start/nvim-treesitter-context
 	url = https://github.com/nvim-treesitter/nvim-treesitter-context.git
+[submodule "nvim-pack/treesitter/start/tree-sitter-manager.nvim"]
+	path = nvim-pack/treesitter/start/tree-sitter-manager.nvim
+	url = https://github.com/romus204/tree-sitter-manager.nvim.git
