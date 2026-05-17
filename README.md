@@ -982,3 +982,39 @@ a list. See the plugin repo for other things it can do.
 
 In theory you don't even need to permanently configure anything, since the
 parser it installs will remain usable without the plugin.
+
+### LSP
+
+nvim 0.11+ contains the actual LSP functionality built in, but plugins may
+still help with configuration.
+
+#### nvim-lspconfig
+
+[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) contains presets for
+various LSPs.
+
+### AI
+
+### minuet-ai.nvim
+
+[minuet-ai.nvim](https://github.com/milanglacier/minuet-ai.nvim) allows calling
+various AIs (including local ones) for code completion.
+
+### UI
+
+#### nvim-web-devicons
+
+[nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) can be used
+by other plugins to supply [Nerd Font](https://www.nerdfonts.com/font-downloads)
+icons.
+
+### Others
+
+Currently not included in the collection because there isn't a single version
+that supports all nvim versions I currently use, but for reference:
+
+* [aerial.nvim](https://github.com/stevearc/aerial.nvim) – sidebar overview
+  and navigation aid for code outline
+* [blink.cmp](https://github.com/Saghen/blink.cmp) – completion UI
+* [blink.lib](https://github.com/Saghen/blink.lib) – library for blink.cmp
+

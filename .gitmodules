@@ -124,3 +124,12 @@
 [submodule "nvim-pack/treesitter/start/tree-sitter-manager.nvim"]
 	path = nvim-pack/treesitter/start/tree-sitter-manager.nvim
 	url = https://github.com/romus204/tree-sitter-manager.nvim.git
+[submodule "nvim-pack/lsp/start/nvim-lspconfig"]
+	path = nvim-pack/lsp/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim-pack/ui/start/nvim-web-devicons"]
+	path = nvim-pack/ui/start/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
+[submodule "nvim-pack/ai/start/minuet-ai.nvim"]
+	path = nvim-pack/ai/start/minuet-ai.nvim
+	url = https://github.com/milanglacier/minuet-ai.nvim.git
