@@ -154,3 +154,12 @@
 [submodule "nvim-pack/debug/start/nvim-dap"]
 	path = nvim-pack/debug/start/nvim-dap
 	url = https://github.com/mfussenegger/nvim-dap
+[submodule "nvim-pack/debuggers/start/nvim-dap-python"]
+	path = nvim-pack/debuggers/start/nvim-dap-python
+	url = https://github.com/mfussenegger/nvim-dap-python
+[submodule "nvim-pack/debuggers/start/nvim-dap-go"]
+	path = nvim-pack/debuggers/start/nvim-dap-go
+	url = https://github.com/leoluz/nvim-dap-go
+[submodule "nvim-pack/debuggers/start/nvim-dap-rdbg"]
+	path = nvim-pack/debuggers/start/nvim-dap-rdbg
+	url = https://github.com/goropikari/nvim-dap-rdbg

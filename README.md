@@ -1044,11 +1044,27 @@ library for integrating nvim with DAP (Debug Adapter Protocol) debuggers. The
 version here may not work on older nvim versions, so don't link the `debug`
 collection if you get errors, but install an older version locally.
 
+This needs setup, see the docs or refer to my dotfiles repo for an example.
+
 #### nvim-dap-ui
 
 [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) adds UI for
 nvim-dap. Depends on nvim-nio, which is in the `integration` collection.
 
+This needs setup, see the docs or refer to my dotfiles repo for an example.
+
+### Debuggers
+
+The group [nvim-pack/debuggers](nvim-pack/debuggers/start) contains some
+helpers for configuring specific debug adapters for nvim-dap. They are in
+a separate group since they probably contain languages not everyone wants,
+and may conflict with other debugger setups. So only symlink the ones you want.
+
+* [nvim-dap-go](https://github.com/leoluz/nvim-dap-go) – Go
+* [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python) – Python
+* [nvim-dap-rdbg](https://github.com/goropikari/nvim-dap-rdbg) – Ruby
+
+These all need setup, see the docs.
 
 ### Integration
 
