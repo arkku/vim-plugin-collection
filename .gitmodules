@@ -163,3 +163,6 @@
 [submodule "nvim-pack/debuggers/start/nvim-dap-rdbg"]
 	path = nvim-pack/debuggers/start/nvim-dap-rdbg
 	url = https://github.com/goropikari/nvim-dap-rdbg
+[submodule "nvim-pack/integration/start/auto-session"]
+	path = nvim-pack/integration/start/auto-session
+	url = https://github.com/rmagatti/auto-session

@@ -1117,6 +1117,13 @@ lua require("nvim-tree").setup()
 You can use `g?` in the explorer to view the bindings. For example `C` toggles
 the "git clean" filter to only show git changes, which is handy.
 
+#### auto-session
+
+[auto-session](https://github.com/rmagatti/auto-session) automatically loads
+and saves sessions, e.g., open files, windows, etc. Normally used when you open
+nvim without arguments to just have the current directory's session. My
+dotfiles has some configuration for it.
+
 #### nvim-nio
 
 [nvim-nio](https://github.com/nvim-neotest/nvim-nio) is a library for
