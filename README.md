@@ -1008,6 +1008,21 @@ various AIs (including local ones) for code completion.
 by other plugins to supply [Nerd Font](https://www.nerdfonts.com/font-downloads)
 icons.
 
+### Integration
+
+[diffview.nvim](https://github.com/sindrets/diffview.nvim) is handy for viewing
+git diff.
+
+``` vim
+:DiffviewOpen
+:DiffviewClose
+:DiffviewFileHistory %
+```
+
+Use <kbd>Tab</kbd> and <kbd>Shift</kdb>+<kdb>Tab</kbd> to navigate between
+files in the diffview. `[c` and `]c` can be used to jump between chunks of
+changes.
+
 ### Others
 
 Currently not included in the collection because there isn't a single version

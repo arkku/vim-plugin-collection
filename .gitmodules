@@ -133,3 +133,6 @@
 [submodule "nvim-pack/ai/start/minuet-ai.nvim"]
 	path = nvim-pack/ai/start/minuet-ai.nvim
 	url = https://github.com/milanglacier/minuet-ai.nvim.git
+[submodule "nvim-pack/integration/start/diffview.nvim"]
+	path = nvim-pack/integration/start/diffview.nvim
+	url = https://github.com/sindrets/diffview.nvim
