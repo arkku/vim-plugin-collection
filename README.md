@@ -1020,8 +1020,25 @@ git diff.
 ```
 
 Use <kbd>Tab</kbd> and <kbd>Shift</kdb>+<kdb>Tab</kbd> to navigate between
-files in the diffview. `[c` and `]c` can be used to jump between chunks of
-changes.
+files in the diffview.
+
+Bindings in the diff view:
+
+* `]c` / `[c` – next/previous chunk of changes
+* `]x` / `[x` – next/previous conflict
+* `dx` - delete the conflict (choose none)
+
+Leader bindings in the diffview:
+
+* `co` - choose ours
+* `ct` – choose theirs
+* `cb` – choose base
+* `ca` – choose all
+* `b` - toggle files
+* `e` – focus files
+
+Uppercase last letter of the choose bindings does it for all.
+
 
 ### Others
 
