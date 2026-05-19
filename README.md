@@ -993,6 +993,28 @@ still help with configuration.
 [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) contains presets for
 various LSPs.
 
+#### lazydev.io
+
+[lazydev.nvim](https://github.com/folke/lazydev.nvim) configures
+`lua-language-server` when editing nvim lua files.
+
+Needs to be enabled in a config file, e.g.,:
+
+``` lua
+local ok, lazydev = pcall(require, 'lazydev')
+if ok then
+    lazydev.setup {
+        -- setup options here
+    }
+end
+```
+
+Also includes a command to check the status of any LSP:
+
+``` vim
+:LazyDev lsp
+```
+
 ### AI
 
 ### minuet-ai.nvim
@@ -1051,7 +1073,23 @@ Uppercase last letter of the choose bindings does it for all.
 [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) is a replacement
 for the built-in NetRW file explorer. It is recommended to disable NetRW when
 this is used. Personally I bind <kbd>Ctrl</kbd>–<kbd>N</kbd> to toggle the
-file manager sidebar.
+file manager sidebar, e.g.:
+
+``` vim
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+nnoremap <C-n> <cmd>NvimTreeToggle<CR>
+command! -nargs=* Lexplore NvimTreeToggle
+lua require("nvim-tree").setup()
+```
+
+You can use `g?` in the explorer to view the bindings. For example `C` toggles
+the "git clean" filter to only show git changes, which is handy.
+
+#### nvim-nio
+
+[nvim-nio](https://github.com/nvim-neotest/nvim-nio) is a library for
+asynchronous I/O. It is used by some plugins like nvim-dap-ui.
 
 ### Others
 
@@ -1062,4 +1100,6 @@ that supports all nvim versions I currently use, but for reference:
   and navigation aid for code outline
 * [blink.cmp](https://github.com/Saghen/blink.cmp) – completion UI
 * [blink.lib](https://github.com/Saghen/blink.lib) – library for blink.cmp
+* [nvim-dap](https://github.com/mfussenegger/nvim-dap) – debugger integration
+* [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) – UI for nvim-dap
 

@@ -142,3 +142,9 @@
 [submodule "nvim-pack/integration/start/nvim-tree.lua"]
 	path = nvim-pack/integration/start/nvim-tree.lua
 	url = https://github.com/nvim-tree/nvim-tree.lua
+[submodule "nvim-pack/integration/start/nvim-nio"]
+	path = nvim-pack/integration/start/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio
+[submodule "nvim-pack/lsp/start/lazydev.nvim"]
+	path = nvim-pack/lsp/start/lazydev.nvim
+	url = https://github.com/folke/lazydev.nvim
