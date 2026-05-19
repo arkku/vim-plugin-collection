@@ -16,7 +16,7 @@ git submodule update --init --recursive
 Then symlink the specific plugin directories in your Vim's `pack` directory:
 
 * **vim**: `~/.vim/pack`
-* **neovim**: `~/.local/share/nvim/site/pack`
+* **neovim**: `~/.local/share/nvim/site/pack` or `~/.config/nvim/pack`
 
 The directory structure under `pack` must be maintained as it is in this
 repository, i.e., `pack/<whatever>/start/<plugin>`. So, to use exactly the
@@ -1138,6 +1138,4 @@ that supports all nvim versions I currently use, but for reference:
   and navigation aid for code outline
 * [blink.cmp](https://github.com/Saghen/blink.cmp) – completion UI
 * [blink.lib](https://github.com/Saghen/blink.lib) – library for blink.cmp
-* [nvim-dap](https://github.com/mfussenegger/nvim-dap) – debugger integration
-* [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) – UI for nvim-dap
 
