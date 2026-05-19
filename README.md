@@ -1035,6 +1035,21 @@ icons.
 [nui.nvim](https://github.com/MunifTanjim/nui.nvim) is a collection of
 UI-building utilities, it is required by some other plugins.
 
+### Debug
+
+#### nvim-dap
+
+[nvim-dap](https://github.com/mfussenegger/nvim-dap) is a fairly low-level
+library for integrating nvim with DAP (Debug Adapter Protocol) debuggers. The
+version here may not work on older nvim versions, so don't link the `debug`
+collection if you get errors, but install an older version locally.
+
+#### nvim-dap-ui
+
+[nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) adds UI for
+nvim-dap. Depends on nvim-nio, which is in the `integration` collection.
+
+
 ### Integration
 
 #### diffview.nvim
