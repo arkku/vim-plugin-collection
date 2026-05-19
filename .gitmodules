@@ -136,3 +136,9 @@
 [submodule "nvim-pack/integration/start/diffview.nvim"]
 	path = nvim-pack/integration/start/diffview.nvim
 	url = https://github.com/sindrets/diffview.nvim
+[submodule "nvim-pack/ui/start/nui.nvim"]
+	path = nvim-pack/ui/start/nui.nvim
+	url = https://github.com/MunifTanjim/nui.nvim
+[submodule "nvim-pack/integration/start/nvim-tree.lua"]
+	path = nvim-pack/integration/start/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua

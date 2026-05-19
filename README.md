@@ -1008,7 +1008,14 @@ various AIs (including local ones) for code completion.
 by other plugins to supply [Nerd Font](https://www.nerdfonts.com/font-downloads)
 icons.
 
+#### nui.nvim
+
+[nui.nvim](https://github.com/MunifTanjim/nui.nvim) is a collection of
+UI-building utilities, it is required by some other plugins.
+
 ### Integration
+
+#### diffview.nvim
 
 [diffview.nvim](https://github.com/sindrets/diffview.nvim) is handy for viewing
 git diff.
@@ -1039,6 +1046,12 @@ Leader bindings in the diffview:
 
 Uppercase last letter of the choose bindings does it for all.
 
+#### nvim-tree.lua
+
+[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) is a replacement
+for the built-in NetRW file explorer. It is recommended to disable NetRW when
+this is used. Personally I bind <kbd>Ctrl</kbd>–<kbd>N</kbd> to toggle the
+file manager sidebar.
 
 ### Others
 
