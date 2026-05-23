@@ -145,9 +145,6 @@
 [submodule "nvim-pack/integration/start/nvim-nio"]
 	path = nvim-pack/integration/start/nvim-nio
 	url = https://github.com/nvim-neotest/nvim-nio
-[submodule "nvim-pack/lsp/start/lazydev.nvim"]
-	path = nvim-pack/lsp/start/lazydev.nvim
-	url = https://github.com/folke/lazydev.nvim
 [submodule "nvim-pack/debug/start/nvim-dap-ui"]
 	path = nvim-pack/debug/start/nvim-dap-ui
 	url = https://github.com/rcarriga/nvim-dap-ui

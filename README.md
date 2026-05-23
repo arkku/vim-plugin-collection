@@ -993,28 +993,6 @@ still help with configuration.
 [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) contains presets for
 various LSPs.
 
-#### lazydev.io
-
-[lazydev.nvim](https://github.com/folke/lazydev.nvim) configures
-`lua-language-server` when editing nvim lua files.
-
-Needs to be enabled in a config file, e.g.,:
-
-``` lua
-local ok, lazydev = pcall(require, 'lazydev')
-if ok then
-    lazydev.setup {
-        -- setup options here
-    }
-end
-```
-
-Also includes a command to check the status of any LSP:
-
-``` vim
-:LazyDev lsp
-```
-
 ### AI
 
 ### minuet-ai.nvim
@@ -1138,4 +1116,6 @@ that supports all nvim versions I currently use, but for reference:
   and navigation aid for code outline
 * [blink.cmp](https://github.com/Saghen/blink.cmp) – completion UI
 * [blink.lib](https://github.com/Saghen/blink.lib) – library for blink.cmp
+* [lazydev.nvim](https://github.com/folke/lazydev.nvim) – configures
+  `lua-language-server` when editing nvim lua files
 
